@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet type="text/css" href="css/cssperxml.css" ?>
+
+<xml>
+
+<titolo>
+    <bold>Studio Medico</bold>
+</titolo>
+<testo>
+    <titolo2>Ci presentiamo! </titolo2>
+    <presentazione> 
+        La Storia ha inizio nell'estate del 2003 e nasce da un'idea dei Medici Andrea Carraro e Antonio Farese. Durante uno 
+        dei loro incontri casuali al mattino per la colazione al Bar, i due amici iniziano una discussione sul miglioramento 
+        del lavoro dei Medici di Medicina Generale nelle forme di organizzazione tipo "Medicina di Gruppo". I due colleghi, 
+        che lavorano in studi diversi nello stesso stabile (nel mitico civico n.15 di corso A. De Stefanis) pensano ad una forma di organizzazione comune. 
+        Analizzando la posizione dei loro studi si rendono conto che essi si trovano sullo stesso piano e allineati al terzo studio medico del palazzzo (l'interno 4 scala A). 
+        Ecco allora prendere forma una idea tanto grande quanto apparentemente difficile da realizzare. Creare un unico grande studio di Medici in Associazione (Generici, Pediatri e Specialisti), 
+        tecnologicamente avanzato (informatizzazione di tutto lo studio, sito web e collegamento a internet in fibra ottica), con personale qualificato (Segretarie, Infermiere) e con servizi innovativi 
+        (prelievi per esami ematochimici, piccola diagnostica).
+    </presentazione>
+    <titolo2>Il nostro Staff:</titolo2>
+    <staff>
+        <persona> <ruolo>Dr.</ruolo> <nome>Francesco</nome> </persona>
+        <persona> <ruolo>Dr.</ruolo> <nome>Riccardo</nome> </persona>
+        <persona> <ruolo>Aiutante</ruolo> <nome>Maurizio</nome> </persona>
+        <persona> <ruolo>Segretaria</ruolo> <nome>Laura</nome> </persona>
+    </staff>
+    <titolo2>Parlano di noi:</titolo2>
+    <recensioni>
+        <giornale><nome>La Repubblica</nome> <articolo>Nuovo "studio 2.0" apre a Roma!</articolo> </giornale>
+        <giornale><nome>Il Messaggero</nome> <articolo>Servizio incredibile per i pazienti di iDentistCare</articolo> </giornale>
+        <sitoweb><nome>dentisti.com</nome> <articolo>Lo studio iDentistCare entra nel web!</articolo> </sitoweb>
+    </recensioni>
+    <titolo2>Sitografia Presentazione</titolo2>
+    <sitografia>
+        <risorsa><nomeris>StudioMedicoDeStefanis: </nomeris><linkris> http://www.studiomedicodestefanis.it/Storia1.htm</linkris></risorsa>
+    </sitografia>
+</testo>
+</xml>

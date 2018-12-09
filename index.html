@@ -1,98 +1,140 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html>
-<head>
-<title>Facebook Login JavaScript Example</title>
-<meta charset="UTF-8">
-</head>
-<body>
-<script>
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else {
-      // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    }
-  }
+	<head>
+		<title> </title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/jquery.scrollgress.min.js"></script>
+		<script src="js/jquery.scrolly.min.js"></script>
+		<script src="js/jquery.slidertron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		
+		<!--aggiunte di database.js-->
+		<script type="text/javascript" lang="javascript" src="js/database.js"></script>	
+	
 
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
+	</head>
+	
+	<body class="landing">
 
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '365142850727291',
-      cookie     : true,  // enable cookies to allow the server to access 
-                          // the session
-      xfbml      : true,  // parse social plugins on this page
-      version    : 'v2.8' // use graph api version 2.8
-    });
+		<!-- Header -->
+			<!--funzione di prova per generare il dottore-->
+			<script type="text/javascript">
+				window.onload = function(){
+					clearAllLocalStorage();
+					initAdmin();
+					
+				}
+				//In caso di utente loggato lo reindirizza
+				updatePage();
+			</script>
+			<!--fine funzine di prova-->
+	
 
-    // Now that we've initialized the JavaScript SDK, we call 
-    // FB.getLoginStatus().  This function gets the state of the
-    // person visiting this page and can return one of three states to
-    // the callback you provide.  They can be:
-    //
-    // 1. Logged into your app ('connected')
-    // 2. Logged into Facebook, but not your app ('not_authorized')
-    // 3. Not logged into Facebook and can't tell if they are logged into
-    //    your app or not.
-    //
-    // These three cases are handled in the callback function.
+			<header id="header" class="alt skel-layers-fixed">
+					<h1 >
+						<a href="index.html">
+						<input type="image" src="images/tooth.png" width="35" height="35">
+						iDentistCare
+						</a>
+					</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="chisiamo.xml">Chi siamo</a></li>
+						<li><a href="dovesiamo.html">Dove siamo</a></li>
+						<li><a href="contatti.html">Contatti</a></li>
+						<li>
+								<a href="login.html" class="icon fa-angle-down">Login</a>
+								<ul>
+									<li><a href="register.html">Registrati</a></li>
+								</ul>
+							</li>
+					</ul>
+				</nav>
 
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
 
-  };
+			</header>
 
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+			
+		<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<h2></h2>
+					<p style="font-weight:bold; font-size: 250%"> Benvenuto nel nostro studio! Vienici a trovare!</p>
+					<ul class="actions">
+						<li><a href="login.html" class="button big scrolly">Prenota una visita!</a></li>
+					</ul>
+				</div>
+			</section>
+		
+		<!-- One -->
+			<section id="one" class="wrapper style1">
+				<div class="container">
+					<header class="major">
+						<h2>Perchè è importante essere un dentista TECNOLOGICO?</h2>
+						<p>Il nostro studio bla bla bla<br />
+						<br />
+						</p>
+					</header>
+					<div class="slider">
+						<span class="nav-previous"></span>
+						<div class="viewer">
+							<div class="reel">
+								<div class="slide">
+									<img src="images/slide01.jpg" alt="" />
+								</div>
+								<div class="slide">
+									<img src="images/slide02.jpg" alt="" />
+								</div>
+								<div class="slide">
+									<img src="images/slide03.jpg" alt="" />
+								</div>
+							</div>
+						</div>
+						<span class="nav-next"></span>
+					</div>
+				</div>
+			</section>
 
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-        
-    });
-  }
-</script>
 
-<!--
-  Below we include the Login Button social plugin. This button uses
-  the JavaScript SDK to present a graphical Login button that triggers
-  the FB.login() function when clicked.
--->
 
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();" >
-</fb:login-button>
 
-<div id="status">
-</div>
 
-</body>
+			
+		<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+				</ul>
+				<ul class="menu">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="login.html">Login</a></li>
+					<li><a href="contatti.html">Contatti</a></li>
+				</ul>
+				<span class="copyright">
+					LTW Project: Riccardo Caprari & Francesco Douglas Scotti di Vigoleno
+				</span>
+			</footer>
+			
+
+
+
+	</body>
 </html>

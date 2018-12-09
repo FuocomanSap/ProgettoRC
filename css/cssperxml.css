@@ -1,0 +1,59 @@
+titolo { 
+    display: block;
+    font-size: 60px; 
+    text-align: center;
+    color: brown;
+}
+
+
+titolo2 { 
+    display: block;
+    font-size: 30px; 
+    text-align: left;
+    color: red;
+}
+
+
+testo {
+    display: block; 
+    font-size: 15px; 
+    text-align: justify;
+    color: black;
+}
+
+
+presentazione {
+    display: block; 
+    text-align: justify;
+}
+
+
+staff {
+    display: grid;
+}
+
+
+ruolo {
+    color: red;
+}
+
+
+recensioni {
+    display: grid;
+}
+
+
+articolo {
+    color: blue
+}
+
+
+sitografia {
+    color: green
+}
+
+
+linkris {
+    color: chocolate;
+    text-decoration: underline;
+}

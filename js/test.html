@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Access an array value of a JSON object.</p>
+
+<p id="demo"></p>
+
+<script>
+
+var myObj, x;
+myObj = {
+    "name":"John",
+    "age":30,
+    "cars":[ "Ford", "BMW", "Fiat" ]
+};
+
+alert("ciao");
+var c = JSON.stringify(myObj);
+alert(c);
+myObj = JSON.parse(c)
+alert(myObj.cars.push("ciao"));
+c = JSON.stringify(myObj);
+alert(c);
+myObj = JSON.parse(c)
+alert(myObj.cars.push("ciao"));
+
+//l.cars=l.cars.push("ciao");
+
+x = l.cars[2];
+alert(x);
+document.getElementById("demo").innerHTML = x;
+
+
+
+
+
+</script>
+
+</body>
+</html>

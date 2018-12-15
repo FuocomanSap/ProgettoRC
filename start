@@ -1,0 +1,6 @@
+#!/bin/bash
+printf "Building the container with docker-compose ...\n"
+docker-compose build
+printf "\nI'm starting the docker container ...\n"
+docker-compose up
+printf "\n... Done!\n"

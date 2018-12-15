@@ -1,0 +1,3 @@
+#!/bin/bash
+printf "Removing the container with docker-compose down ...\n"
+docker-compose down

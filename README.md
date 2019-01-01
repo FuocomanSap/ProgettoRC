@@ -51,5 +51,6 @@ Per la realizzazione del progetto abbiamo utilizzato:
 Per utilizzare il progetto bisogna:
 
 * Installare Docker ([Docker on Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository))
+* Installare il docker-compose (```sudo apt install docker-compose ```)
 * Dare i permessi ai file start e stop (```chmod +x FileName```)
 * Avviare il docker container tramite il comando ```./start```

@@ -67,7 +67,7 @@ module.exports = function(passport){
 
 	//test su pagina del doctor
 	router.get('/homeD',function(req, res){
-		res.render('testFolder/homeD', { user: req.user });
+		res.render('ProgettoLTW/index', { user: req.user });
 	});
 
 	return router;

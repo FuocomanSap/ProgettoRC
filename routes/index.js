@@ -64,5 +64,11 @@ module.exports = function(passport){
 		res.redirect('/');
 	});
 
+
+	//test su pagina del doctor
+	router.get('/homeD',function(req, res){
+		res.render('testFolder/homeD', { user: req.user });
+	});
+
 	return router;
 }

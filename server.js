@@ -56,3 +56,6 @@ const port = 3000;
 app.listen(port, () => console.log('Server is running on port 80 ...'));
 
 module.exports = app;
+
+//set the css path
+app.use(express.static(__dirname + '/public'));

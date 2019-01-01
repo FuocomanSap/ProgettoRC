@@ -52,5 +52,8 @@ Per utilizzare il progetto bisogna:
 
 * Installare Docker ([Docker on Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository))
 * Installare il docker-compose (```sudo apt install docker-compose ```)
+* installare la docker-machine (``` base=https://github.com/docker/machine/releases/download/v0.16.0 &&
+  curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine &&
+  sudo install /tmp/docker-machine /usr/local/bin/docker-machine ```)
 * Dare i permessi ai file start e stop (```chmod +x FileName```)
 * Avviare il docker container tramite il comando ```./start```

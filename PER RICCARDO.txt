@@ -12,4 +12,8 @@ ovviamente ogni volta lo svuotiamo, senza tenerci il record di tutti i commit
 
     ho aggiunto una riga in server.js, la riga e' la 60, praticaemnte serve
     a dire alle varie pagine queale sara il percorso da cui prendereanno i css e credo anche i js
+
+    per non dover scrivere in ogni pagina(chisiamo,dovesiamo etc), la cosa migliore e' fare 1 sola
+    get per pagina e poi dalla get reindirizzare in base al login o meno...
+    o almeno penso sia la via migliore
      

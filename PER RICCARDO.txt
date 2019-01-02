@@ -1,0 +1,15 @@
+ho deciso che inizieremo ad usare questo readme per fare un breve riassunto degli ultimi commit
+ovviamente ogni volta lo svuotiamo, senza tenerci il record di tutti i commit
+   
+   
+    data 2/1/2019:
+    ho aggiunto il frontend dal progetto di linguaggi.
+
+    ho aggiunto una get(/homeD) che fa riferimento all'index di linguaggi.
+
+    ho spostato i file css dal progettidiLTW nella cartella public/stylesheet,
+    infati, per essere reperibili devono essere in quella cartella.
+
+    ho aggiunto una riga in server.js, la riga e' la 60, praticaemnte serve
+    a dire alle varie pagine queale sara il percorso da cui prendereanno i css e credo anche i js
+     

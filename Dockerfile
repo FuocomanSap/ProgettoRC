@@ -20,6 +20,10 @@ RUN npm install connect-flash --save
 
 RUN npm install cookie-parser --save
 
+RUN npm install xml2js
+
+RUN npm audit fix
+
 COPY . .
 
 

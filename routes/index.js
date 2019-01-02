@@ -70,5 +70,26 @@ module.exports = function(passport){
 		res.render('ProgettoLTW/index.html', { user: req.user });
 	});
 
+	router.get('/contatti.html',function(req, res){
+		res.render('ProgettoLTW/contatti.html', { user: req.user });
+	});
+
+	router.get('/chisiamo.xml',function(req, res){
+		Item.find()
+      
+      .catch(err => res.status(404).json({ msg: 'No items found' }));
+	});
+
+	router.get('/dovesiamo.html',function(req, res){
+		res.render('ProgettoLTW/dovesiamo.html', { user: req.user });
+	});
+
+	router.get('/index.html',function(req, res){
+		res.render('ProgettoLTW/index.html', { user: req.user });
+	});
+
+
+
+
 	return router;
 }

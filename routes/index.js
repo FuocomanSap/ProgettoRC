@@ -76,7 +76,7 @@ module.exports = function(passport){
 
 	router.get('/chisiamo.xml',function(req, res){
 		Item.find()
-      
+      .then(items => res.render('ProgettoLTW/chisiamo.xml', { items }))
       .catch(err => res.status(404).json({ msg: 'No items found' }));
 	});
 

@@ -11,9 +11,11 @@ ovviamente ogni volta lo svuotiamo, senza tenerci il record di tutti i commit
     infati, per essere reperibili devono essere in quella cartella.
 
     ho aggiunto una riga in server.js, la riga e' la 60, praticaemnte serve
-    a dire alle varie pagine queale sara il percorso da cui prendereanno i css e credo anche i js
+    a dire alle varie pagine queale sara il percorso da cui prendereanno i css,i js e le immagini
+    infatti solo la cartela public puo' essere acceduta dai vari file HTML
 
     per non dover scrivere in ogni pagina(chisiamo,dovesiamo etc), la cosa migliore e' fare 1 sola
     get per pagina e poi dalla get reindirizzare in base al login o meno...
     o almeno penso sia la via migliore
-     
+    
+    per adesso ho un problema con la GET(/chisiamo.xml) non riesco a far leggere il file xml a nodejs :C

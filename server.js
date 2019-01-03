@@ -57,5 +57,5 @@ app.listen(port, () => console.log('Server is running on port 80 ...'));
 
 module.exports = app;
 
-//set the css path
+//set the css,js,imm path, per poter essere acceduti dalle pagine html 
 app.use(express.static(__dirname + '/public'));

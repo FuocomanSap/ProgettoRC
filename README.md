@@ -56,6 +56,6 @@ Per utilizzare il progetto bisogna:
   curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine &&
   sudo install /tmp/docker-machine /usr/local/bin/docker-machine ```)
 * creare un gruppo docker (```sudo groupadd docker ```)
-* aggiungetevi al gruppo docker per poter eseguire docker senza dover esser SUDO (```sudo usermod -aG docker $USER```)
+* aggiungesi al gruppo docker(```sudo usermod -aG docker $USER```)
 * Dare i permessi ai file start e stop (```chmod +x FileName```)
 * Avviare il docker container tramite il comando ```./start```

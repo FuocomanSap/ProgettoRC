@@ -73,7 +73,7 @@ module.exports = function(passport){
 	
 	//test page
 	router.get('/test',function(req, res){
-		res.render('testFolder/test.html', { user: req.user });
+		res.render('Chat/chat.html', { user: req.user });
 	});
 	
 	//test su pagina del doctor

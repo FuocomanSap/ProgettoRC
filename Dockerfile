@@ -22,6 +22,7 @@ RUN npm install connect-flash --save
 RUN npm install cookie-parser --save
 
 RUN npm install xml2js --save
+RUN npm install websocket --save
 
 RUN npm audit fix --save
 
@@ -31,4 +32,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "start","startChat"]

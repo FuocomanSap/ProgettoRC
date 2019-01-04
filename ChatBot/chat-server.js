@@ -1,6 +1,3 @@
-
-"use strict";
-
 // Optional. You will see this name in eg. 'ps' or 'top' command
 process.title = 'identistcare-bot-chat';
 

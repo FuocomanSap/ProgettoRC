@@ -13,3 +13,8 @@ services:
     image: mongo
     ports:
       - '27017:27017'
+  websocket:
+    container_name: chatbot
+    build: ./ChatBot/
+    ports:
+      - '1337:1337'

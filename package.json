@@ -4,8 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "node server.js ",
-    "startChat": "node /ChatBot/chat-server.js"
+    "start": "node server.js "
   },
   "keywords": [],
   "author": "",

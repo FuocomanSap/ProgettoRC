@@ -69,36 +69,14 @@ module.exports = function(passport){
 	//////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////
-	//tutta questa parte poi dovra' essere spostata nel prorpio file.js
-	//adesso per fare dei test ho preferito mettere tutto qua dentro
+	
 	
 	//test page
 	router.get('/test',function(req, res){
 		res.render('Chat/chat.html', { user: req.user });
 	});
 	
-	//test su pagina del doctor
-	router.get('/homeD',function(req, res){
-		res.render('ProgettoLTW/index.html', { user: req.user });
-	});
-
-	router.get('/contatti.html',function(req, res){
-		res.render('ProgettoLTW/contatti.html', { user: req.user });
-	});
-
-	router.get('/chisiamo.xml',function(req, res){
-		Utente.find()
-      .then(utenti => res.render('ProgettoLTW/chisiamo.xml', { utenti }))
-      .catch(err => res.status(404).json({ msg: 'No users found' }));
-	});
-
-	router.get('/dovesiamo.html',function(req, res){
-		res.render('ProgettoLTW/dovesiamo.html', { user: req.user });
-	});
-
-	router.get('/index.html',function(req, res){
-		res.render('ProgettoLTW/index.html', { user: req.user });
-	});
+	
 
 	return router;
 }

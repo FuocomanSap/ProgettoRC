@@ -71,7 +71,10 @@ module.exports = function(passport){
 	//tutta questa parte poi dovra' essere spostata nel prorpio file.js
 	//adesso per fare dei test ho preferito mettere tutto qua dentro
 	
-	
+	//test page
+	router.get('/test',function(req, res){
+		res.render('testFolder/test.html', { user: req.user });
+	});
 	
 	//test su pagina del doctor
 	router.get('/homeD',function(req, res){

@@ -75,7 +75,7 @@ module.exports = function(passport){
 
 
     router.get('/register',function(req, res){
-        res.render('ProgettoLTW/login.html', { user: req.user });
+        res.render('ProgettoLTW/register.html', { user: req.user });
     });
 
 

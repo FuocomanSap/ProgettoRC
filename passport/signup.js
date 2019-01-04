@@ -6,10 +6,12 @@ module.exports = function(passport){
 
 	passport.use('signup', new LocalStrategy({
             passReqToCallback : true // allows us to pass back the entire request to the callback
+            
         },
+        
         //function(req, username, password, done) {
             function(req,name,surname,email,password,phoneNumber,address,CF,birthday,birthcountry,category,User,copy,done){
-
+                console.log('sono la funzione di login\n');
             findOrCreateUser = function(){
                 // find a user in Mongo with provided username
                 Utente.findOne({ email : email }, function(err, user) {

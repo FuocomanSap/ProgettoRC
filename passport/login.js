@@ -9,6 +9,7 @@ module.exports = function(passport){
             passReqToCallback : true
         },
         function(req, email, password, done) { 
+            console.log('sono la funzione di login\n');
             // check in mongo if a user with username exists or not
             Utente.findOne({ email :  email}, 
                 function(err, user) {

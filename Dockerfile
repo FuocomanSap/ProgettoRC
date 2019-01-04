@@ -20,10 +20,10 @@ RUN npm install connect-flash --save
 
 RUN npm install cookie-parser --save
 
-RUN npm install xml2js
+RUN npm install xml2js --save
 
-RUN npm audit fix
-RUN npm install passport-facebook
+RUN npm audit fix --save
+RUN npm install passport-facebook --save
 
 COPY . .
 

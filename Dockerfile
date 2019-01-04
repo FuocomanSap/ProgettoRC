@@ -23,6 +23,7 @@ RUN npm install cookie-parser --save
 RUN npm install xml2js
 
 RUN npm audit fix
+RUN npm install passport-facebook
 
 COPY . .
 

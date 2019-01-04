@@ -1,5 +1,5 @@
 var LocalStrategy   = require('passport-local').Strategy;
-const Item = require('../models/Item');
+const Utente = require('../models/Utente');
 var bCrypt = require('bcrypt-nodejs');
 
 var FacebookStrategy = require('passport-facebook').Strategy;
@@ -14,7 +14,7 @@ module.exports = function(passport){
       },
       function(accessToken, refreshToken, profile, done) {
         var email= profile.emails[0].value;
-        Item.findOne({ username: email }, function(err, user) {
+        Utente.findOne({ email : email }, function(err, user) {
             if (err){
                 console.log('Error in Facebook login: '+err);
                 return done(err);
@@ -25,12 +25,19 @@ module.exports = function(passport){
             } else {
                 // if there is no user with that email
                 // create the user
-                var newUser = new Item();
+                var newUser = new Utente();
   
-                // set the user's local credentials
-                newUser.username = email;
+                // Setting the user's credentials
+                newUser.email = email;
+                newUser.nome = profile.name.givenName;
+                newUser.cognome = profile.name.familyName;
+                
+                // Default values for facebook users
+                newUser.telefono = 123456789;
+                newUser.indirizzo = "Via delle vie 86";
+                newUser.codicefiscale = "ABC123KFG67BM501I";
   
-                // save the user
+                // Saving the user
                 newUser.save(function(err) {
                     if (err){
                         console.log('Error in Saving user: '+err);  

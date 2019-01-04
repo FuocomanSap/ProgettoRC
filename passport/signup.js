@@ -1,5 +1,5 @@
 var LocalStrategy   = require('passport-local').Strategy;
-const Item = require('../models/Item');
+const Utente = require('../models/Utente');
 var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport){
@@ -11,7 +11,7 @@ module.exports = function(passport){
 
             findOrCreateUser = function(){
                 // find a user in Mongo with provided username
-                Item.findOne({ username :  username }, function(err, user) {
+                Utente.findOne({ email :  username }, function(err, user) {
                     // In case of any error, return using the done method
                     if (err){
                         console.log('Error in SignUp: '+err);
@@ -24,14 +24,12 @@ module.exports = function(passport){
                     } else {
                         // if there is no user with that email
                         // create the user
-                        var newUser = new Item();
+                        var newUser = new Utente();
 
                         // set the user's local credentials
-                        newUser.username = username;
+                        newUser.email = username;
                         newUser.password = createHash(password);
-                        //newUser.email = req.param('email');
-                        //newUser.firstName = req.param('firstName');
-                        //newUser.lastName = req.param('lastName');
+                        //newUser.nome = nome;
 
                         // save the user
                         newUser.save(function(err) {

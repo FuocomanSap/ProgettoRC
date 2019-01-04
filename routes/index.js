@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const Item = require('../models/Item');
+//const Item = require('../models/Item');
+const Utente = require('../models/Utente');
 
 // Function that checks if a user is authenticated
 function CheckAuth(req, res, next) {
@@ -27,9 +28,9 @@ module.exports = function(passport){
 
   // GET Login page
   router.get('/', CheckLogged, (req, res) => {
-    Item.find()
-      .then(items => res.render('index', { items }))
-      .catch(err => res.status(404).json({ msg: 'No items found' }));
+    Utente.find()
+      .then(utenti => res.render('index', { utenti }))
+      .catch(err => res.status(404).json({ msg: 'No users found' }));
   });
 
 
@@ -86,9 +87,9 @@ module.exports = function(passport){
 	});
 
 	router.get('/chisiamo.xml',function(req, res){
-		Item.find()
-      .then(items => res.render('ProgettoLTW/chisiamo.xml', { items }))
-      .catch(err => res.status(404).json({ msg: 'No items found' }));
+		Utente.find()
+      .then(utenti => res.render('ProgettoLTW/chisiamo.xml', { utenti }))
+      .catch(err => res.status(404).json({ msg: 'No users found' }));
 	});
 
 	router.get('/dovesiamo.html',function(req, res){

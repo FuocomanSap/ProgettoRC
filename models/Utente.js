@@ -8,13 +8,22 @@ const UtenteSchema = new Schema({
   },
   nome: {
     type: String,
-    required: true
+    //required: true
   },
   cognome: {
     type: String,
-    required: true
+    //required: true
   },
   password: {
+    type: String,
+  },
+  telefono: {
+    type: Number,
+  },
+  indirizzo: {
+    type: String,
+  },
+  codicefiscale: {
     type: String,
   },
   data: {
@@ -23,4 +32,4 @@ const UtenteSchema = new Schema({
   }
 });
 
-module.exports = Utente = mongoose.model('user', UtenteSchema);
+module.exports = Utente = mongoose.model('utente', UtenteSchema);

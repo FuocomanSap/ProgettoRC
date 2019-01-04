@@ -49,7 +49,8 @@ mongoose
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
-const Item = require('./models/Item');
+//const Item = require('./models/Item');
+const Utente = require('./models/Utente');
 
 // Using routes
 app.use('/', routes);

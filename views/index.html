@@ -18,9 +18,9 @@
       <% }; %>
     -->
     
-    <% items.forEach(function(item) { %>
+    <% utenti.forEach(function(utente) { %>
       <li>
-        <%= item.username +' - '+ item.password +' - '+ item.date %>
+        <%= utente.email +' - '+ utente.password +' - '+ utente.nome+' - '+utente.cognome+' - '+utente.data %>
       </li>
       <% }); %>
   

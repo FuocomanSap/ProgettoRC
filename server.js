@@ -24,8 +24,10 @@ var path = require('path');
 var initPassport = require('./passport/init');
 initPassport(passport);
 
+// Setting up routes
 var routes = require('./routes/index')(passport);
-var fbroutes = require('./routes/facebook-route')(passport);
+var fbroutes = require('./routes/facebook-routes')(passport);
+var identistcare = require('./routes/identistcare')(passport);
 
 
 // Setting the view engine with HTML
@@ -52,6 +54,7 @@ const Item = require('./models/Item');
 // Using routes
 app.use('/', routes);
 app.use('/', fbroutes);
+app.use('/', identistcare);
 
 const port = 3000;
 

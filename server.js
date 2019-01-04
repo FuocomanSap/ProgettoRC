@@ -25,6 +25,7 @@ var initPassport = require('./passport/init');
 initPassport(passport);
 
 var routes = require('./routes/index')(passport);
+//var fbroutes = require('./routes/facebook-route')(passport);
 
 
 // Setting the view engine with HTML
@@ -50,6 +51,7 @@ const Item = require('./models/Item');
 
 // Using routes
 app.use('/', routes);
+//app.use('/', fbroutes);
 
 const port = 3000;
 

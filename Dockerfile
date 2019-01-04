@@ -15,6 +15,7 @@ RUN npm install bcrypt-nodejs --save
 RUN npm install passport --save
 RUN npm install passport-local --save
 RUN npm install passport-oauth --save
+RUN npm install passport-facebook --save
 
 RUN npm install connect-flash --save
 
@@ -23,7 +24,7 @@ RUN npm install cookie-parser --save
 RUN npm install xml2js --save
 
 RUN npm audit fix --save
-RUN npm install passport-facebook --save
+
 
 COPY . .
 

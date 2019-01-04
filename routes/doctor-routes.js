@@ -40,11 +40,11 @@ module.exports = function(passport){
 	
 	
 	//test su pagina del doctor
-	router.get('/homeTest',function(req, res){
+	router.get('/imieipazienti',function(req, res){
         var type = CheckUserType(req,res);
-        if(type==1)	res.render('ProgettoLTW/afterLogin/afterloginindex.html', { user: req.user });
+        if(type==1)	res.render('https://media.giphy.com/media/muKS0FZTV8Ih2/giphy.gif', { user: req.user });
         if(type==2) res.render('ProgettoLTW/afterLogin/afteradminloginindex.html', { user: req.user });
-        else res.render('ProgettoLTW/index.html', { user: req.user });
+        else res.render('https://media.giphy.com/media/muKS0FZTV8Ih2/giphy.gif', { user: req.user });
     });
 
 

@@ -6,29 +6,44 @@ const UtenteSchema = new Schema({
     type: String,
     required: true
   },
-  nome: {
+  name: {
     type: String,
-    //required: true
+    required: true
   },
   cognome: {
     type: String,
-    //required: true
+    required: true
   },
   password: {
     type: String,
+    required: true
   },
   telefono: {
     type: Number,
   },
   indirizzo: {
     type: String,
+    required: true
   },
   codicefiscale: {
     type: String,
+    required : true
   },
-  data: {
+  dataNascita: {
     type: Date,
-    default: Date.now
+    required: true
+  },
+  luogoNascita:{
+    type: String,
+    required: true
+  },
+  esenzioni:{
+    type:String,
+    required:true
+  },
+  tipoUtente:{
+    type: String,
+    required: true
   },
   admin:{
     type:Boolean,

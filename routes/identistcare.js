@@ -40,7 +40,7 @@ module.exports = function(passport){
 	
 	
 	//test su pagina del doctor
-	router.get('/homeTest',function(req, res){
+	router.get('/',function(req, res){
         var type = CheckUserType(req,res);
         if(type==1)	res.render('ProgettoLTW/afterLogin/afterloginindex.html', { user: req.user });
         if(type==2) res.render('ProgettoLTW/afterLogin/afteradminloginindex.html', { user: req.user });
@@ -68,7 +68,29 @@ module.exports = function(passport){
         else res.render('ProgettoLTW/dovesiamo.html', { user: req.user });
 	});
 
-	
+
+    router.get('/login',function(req, res){
+        res.render('ProgettoLTW/login.html', { user: req.user });
+    });
+
+
+    router.get('/register',function(req, res){
+        res.render('ProgettoLTW/login.html', { user: req.user });
+    });
+
+
+    router.post('/register', passport.authenticate('signup', {
+        successRedirect: '/login',
+        failureRedirect: '/register',
+        failureFlash : true,
+        session: false   // After a user signs up, he won't access his account
+      }));
+
+      router.post('/login', passport.authenticate('login', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash : true  
+      }));
 
 	return router;
 }

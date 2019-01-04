@@ -25,7 +25,8 @@ var initPassport = require('./passport/init');
 initPassport(passport);
 
 // Setting up routes
-var routes = require('./routes/index')(passport);
+//var routes = require('./routes/index')(passport);
+var doctor_routes=require('./routes/doctor-routes')(passport);
 var fbroutes = require('./routes/facebook-routes')(passport);
 var identistcare = require('./routes/identistcare')(passport);
 
@@ -53,7 +54,8 @@ mongoose
 const Utente = require('./models/Utente');
 
 // Using routes
-app.use('/', routes);
+//app.use('/', routes);
+app.use('/',doctor_routes);
 app.use('/', fbroutes);
 app.use('/', identistcare);
 

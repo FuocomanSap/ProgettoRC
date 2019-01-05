@@ -8,6 +8,7 @@ Douglas Scotti di Vigoleno Francesco
 
 ## Descrizione
 
+curl -H "Authorization: Bearer $TOKEN" localhost/apicartellaclinica
 
 ## Architettura
 Il progetto ha la seguente architettura:

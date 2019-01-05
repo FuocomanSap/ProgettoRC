@@ -2,24 +2,6 @@ var express = require('express');
 var router = express.Router();
 const Utente = require('../models/Utente');
 
-// JWT configuration
-let jwt = require('jsonwebtoken');
-let config = require('./config');
-let middleware = require('./jwtmiddleware');
-
-function JWTAuth(req,res) {
-    let username = req.user.email;
-    
-    let token = jwt.sign({username: username},
-    config.secret,
-    { expiresIn: '24h' // expires in 24 hours
-    }
-    );
-
-    // return the JWT token for the future API calls
-    res.render('ProgettoLTW/patient/gentoken.html', { user: req.user.nome, token: token });
-}
-
 
 
 // Function that checks if a user is authenticated
@@ -60,8 +42,6 @@ function CheckLoggedChat(req, res, next) {
     return next(); 
   }
 }
-
-
 
 
 module.exports = function(passport){
@@ -128,21 +108,9 @@ module.exports = function(passport){
 		res.render('Chat/chat.html');
 	});
 
-    //REST API WITH JWT SERVICE
-    router.get('/gentoken', CheckLoggedChat, function(req, res){
-		res.render('ProgettoLTW/patient/gentoken.html', { user: req.user.nome, token: "not generated yet" });
-    });
-    
-    router.post('/gentoken', CheckLoggedChat, JWTAuth);
-    
 
-    router.get('/cartellaclinica', function(req, res){
-		res.render('ProgettoLTW/patient/apicartellaclinica.html', { user: req.user.nome });
-    });
-
-    router.post('/cartellaclinica', middleware.checkToken, function(req, res){
-        res.render('ProgettoLTW/patient/cartellaclinica.html',  { user: req.user });
-    });
 
 	return router;
 }
+
+

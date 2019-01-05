@@ -13,7 +13,6 @@ module.exports = function(passport){
         
         function(req, username, password, done) {
             //function(req,name,surname,email,password,phoneNumber,address,CF,birthday,birthcountry,category,User,copy,done){
-            console.log('buonaseeeeeeeeera');
             findOrCreateUser = function(){
                 // find a user in Mongo with provided username
                 Utente.findOne({ email : username }, function(err, user) {

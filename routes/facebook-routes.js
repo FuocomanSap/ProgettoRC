@@ -15,10 +15,10 @@ module.exports = function(passport){
 		// authentication has failed.
 
     router.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { failureRedirect: '/' }),
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
     function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/home');
+    res.redirect('/');
     });
 
 

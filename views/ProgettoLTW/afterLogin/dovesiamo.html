@@ -6,6 +6,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 		<script src="stylesheets/js/jquery.min.js"></script>
 		<script src="stylesheets/js/jquery.dropotron.min.js"></script>
 		<script src="stylesheets/js/jquery.scrollgress.min.js"></script>
@@ -14,49 +15,46 @@
 		<script src="stylesheets/js/skel.min.js"></script>
 		<script src="stylesheets/js/skel-layers.min.js"></script>
 		<script src="stylesheets/js/init.js"></script>
-	
-		<link type="text/css" rel="stylesheet" href="stylesheets/css/skel.css" />
-		<link type="text/css" rel="stylesheet" href="stylesheets/css/style.css" />
-		<link type="text/css" rel="stylesheet" href="stylesheets/css/style-xlarge.css" />
-	
-	</head>
-	
+		
+			<link rel="stylesheet" href="stylesheets/css/skel.css" />
+			<link rel="stylesheet" href="stylesheets/css/style.css" />
+			<link rel="stylesheet" href="stylesheets/css/style-xlarge.css" />
+		
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+  
+    </head>
 	<body class="landing">
-		<script type="text/javascript">
-			//Se l'utente non è loggato viene reindirizzato al login	
-			updateAfterLoginPage();
-		</script>
+	
 		<!-- Header -->
-		<header id="header" class="skel-layers-fixed">
-			<h1>
-				<a id="logohome" href="/">
-					<input type="image" src="stylesheet/images/tooth.png" width="35" height="35">
-					iDentistCare
-				</a>
-			</h1>
-			<nav id="nav">
-				<ul>
-					<li><a id="paginahome" href="/">Home</a></li>
-					<li><a href="/chisiamo">Chi siamo</a></li>
-					<li><a href="/dovesiamo">Dove siamo</a></li>
-					<li><a href="/contatti">Contatti</a></li>
-					<li>
-						<a id="paginacorrente" href="/dovesiamo" class="icon fa-angle-down"> Benvenuto, <span id="log"></span> </a>
-	
-	
+			<header id="header" class="skel-layers-fixed">
+					<h1 >
+						<a href="/">
+						<input type="image" src="stylesheets/images/tooth.png" width="35" height="35">
+						iDentistCare
+						</a>
+					</h1>
+					<nav id="nav">
 						<ul>
-							<li><a href="/prenota">Prenota una visita</a></li>
-							<li><a href="/cartellaclinica">La mia cartella</a></li>
-							<li><a href="/impostazioni">Impostazioni</a></li>
-							<li><a href="/logout" onclick="removeLogged()">Logout</a></li>
+							<li><a id="paginahome" href="/">Home</a></li>
+							<li><a href="/chisiamo">Chi siamo</a></li>
+							<li><a href="/dovesiamo">Dove siamo</a></li>
+							<li><a href="/contatti">Contatti</a></li>
+							<li>
+								<a id="paginacorrente" href="/contatti" class="icon fa-angle-down"> Benvenuto, <span id="log"></span> </a>
+			
+								
+								<ul>
+									<li><a href="/prenota">Prenota una visita</a></li>
+									<li><a href="/cartellaclinica">La mia cartella</a></li>
+									<li><a href="/medchat">Parla con un dottore</a></li>
+									<li><a href="/impostazioni">Impostazioni</a></li>
+									<li><a href="/logout">Logout</a></li>
+								</ul>
+							</li>
 						</ul>
-					</li>
-				</ul>
-			</nav>
-	
-			<script language="JavaScript"> setNome(); </script>
-	
-		</header>
+					</nav>
+			</header>
 
             
             <section id="doveSiamo" class="wrapper style1">
@@ -107,8 +105,9 @@
 					<li><a href="/contatti">Contatti</a></li>
 				</ul>
 				<span class="copyright">
-					LTW Project: Riccardo Caprari & Francesco Douglas
+					LTW Project: Riccardo Caprari & Francesco Douglas Scotti di Vigoleno
 				</span>
 			</footer>
+
 	</body>
 </html>

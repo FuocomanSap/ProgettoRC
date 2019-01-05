@@ -6,9 +6,8 @@ const UtenteSchema = new Schema({
     type: String,
     unique: true,
     required: true,
-    
   },
-  name: {
+  nome: {
     type: String,
     required: true
   },
@@ -18,34 +17,27 @@ const UtenteSchema = new Schema({
   },
   password: {
     type: String,
-    required: true
   },
   telefono: {
     type: Number,
   },
   indirizzo: {
     type: String,
-    required: true
   },
   codicefiscale: {
     type: String,
-    required : true
   },
   dataNascita: {
     type: Date,
-    required: true
   },
   luogoNascita:{
     type: String,
-    required: true
   },
   esenzioni:{
     type:String,
-    required:true
   },
   tipoUtente:{
     type: String,
-    required: true
   },
   admin:{
     type:Boolean,

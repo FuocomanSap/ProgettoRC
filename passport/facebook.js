@@ -32,7 +32,7 @@ module.exports = function(passport){
                 newUser.nome = profile.name.givenName;
                 newUser.cognome = profile.name.familyName;
                 
-                // Default values for facebook users
+                // Default values for facebook users (just a test)
                 newUser.telefono = 123456789;
                 newUser.indirizzo = "Via delle vie 86";
                 newUser.codicefiscale = "ABC123KFG67BM501I";

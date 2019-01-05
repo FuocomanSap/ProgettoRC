@@ -18,13 +18,13 @@ function CheckAuth(req, res, next) {
 // (if he tries to access pre-login pages)
 function CheckLogged(req, res, next) {
 	if (req.isAuthenticated()){
-    res.redirect('/home');
+    res.redirect('/');
   } else {
     return next(); 
   }
 }
 
-//function that check if a user is the an Admin
+//function that checks if a user is an Admin
 function CheckUserType(req,res){
     if(req.isAuthenticated()){
         if(req.user.admin=="true") return 2;
@@ -37,9 +37,6 @@ function CheckUserType(req,res){
 
 module.exports = function(passport){
 
-	
-	
-	//test su pagina del doctor
 	router.get('/',function(req, res){
         var type = CheckUserType(req,res);
         if(type==1)	res.render('ProgettoLTW/afterLogin/afterloginindex.html', { user: req.user });
@@ -69,12 +66,12 @@ module.exports = function(passport){
 	});
 
 
-    router.get('/login',function(req, res){
+    router.get('/login', CheckLogged,function(req, res){
         res.render('ProgettoLTW/login.html', { user: req.user });
     });
 
 
-    router.get('/register',function(req, res){
+    router.get('/register', CheckLogged,function(req, res){
         res.render('ProgettoLTW/register.html', { user: req.user });
     });
 
@@ -86,11 +83,22 @@ module.exports = function(passport){
         session: false   // After a user signs up, he won't access his account
       }));
 
-      router.post('/login', passport.authenticate('login', {
+    router.post('/login', passport.authenticate('login', {
         successRedirect: '/',
         failureRedirect: '/login',
         failureFlash : true  
       }));
+
+
+    router.get('/logout', function(req, res) {
+		req.logout();
+		res.redirect('/');
+	});
+
+    router.get('/medchat', CheckLogged, function(req, res){
+		res.render('Chat/chat.html', { user: req.user });
+	});
+
 
 	return router;
 }

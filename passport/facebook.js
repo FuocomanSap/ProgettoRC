@@ -10,9 +10,12 @@ module.exports = function(passport){
         clientID: 365142850727291,
         clientSecret: "dce65e9c936588dc6c5925d3a8388224",
         callbackURL: "http://localhost/auth/facebook/callback",
-        profileFields: ['id', 'emails', 'name']
+        profileFields: ['id', 'emails', 'name','birthday','hometown']
       },
       function(accessToken, refreshToken, profile, done) {
+        //console.log(profile);
+        //console.log(profile._json.hometown.name[0]);
+
         var email= profile.emails[0].value;
         Utente.findOne({ email : email }, function(err, user) {
             if (err){
@@ -33,9 +36,9 @@ module.exports = function(passport){
                 newUser.cognome = profile.name.familyName;
                 
                 // Default values for facebook users (just a test)
-                newUser.telefono = 123456789;
-                newUser.indirizzo = "Via delle vie 86";
-                newUser.codicefiscale = "ABC123KFG67BM501I";
+                
+                newUser.indirizzo =profile._json.hometown.name;
+                newUser.codicefiscale = profile._json.birthday;
   
                 // Saving the user
                 newUser.save(function(err) {

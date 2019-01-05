@@ -9,16 +9,19 @@ module.exports = function(passport){
     //i valori accettati sono: 'MALE,FEMALE,null'
     //ove con 'null' si i ntende tutti i dottori che lavorano
     //nel nostro studio
+    // curl -X GET localhost/dottori/<sesso>
         router.get('/dottori/(:sesso)',function(req, res){
             var sex = req.params.sesso
             if(sex=='null'){
-                Utente.find({ admin: 'false'},function (err, docs) {
-                    console.log(docs);
-                    res.json(docs);});
+               Utente.find({ admin: 'false'})
+                       .select('email nome cognome sesso dataNascita')
+                       .exec(function(err, txs){
+                        res.json(txs);});
             }else{
-                Utente.find({ admin: 'false', sesso : sex },function (err, docs) {
-                console.log(docs);
-                res.json(docs);});
+                Utente.find({ admin: 'false', sesso:sex})
+                       .select('email nome cognome sesso dataNascita')
+                       .exec(function(err, txs){
+                        res.json(txs);});
             }
         });
         

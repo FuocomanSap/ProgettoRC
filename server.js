@@ -30,6 +30,7 @@ initPassport(passport);
 
 // Setting up routes
 //var routes = require('./routes/index')(passport);
+var api=require('./routes/api')(passport);
 var client_routes=require('./routes/client-routes')(passport);
 var doctor_routes=require('./routes/doctor-routes')(passport);
 var fbroutes = require('./routes/facebook-routes')(passport);
@@ -64,6 +65,8 @@ app.use('/', client_routes);
 app.use('/', doctor_routes);
 app.use('/', fbroutes);
 app.use('/', identistcare);
+app.use('/', api);
+
 
 const port = 3000;
 

@@ -5,20 +5,22 @@ var bCrypt = require('bcrypt-nodejs');
 module.exports = function(passport){
 
 	passport.use('signup', new LocalStrategy({
-            passReqToCallback : true // allows us to pass back the entire request to the callback
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback : true // allows us to pass back the entire request to the callback
             
         },
         
-        //function(req, username, password, done) {
-            function(req,name,surname,email,password,phoneNumber,address,CF,birthday,birthcountry,category,User,copy,done){
-                console.log('sono la funzione di login\n');
+        function(req, username, password, done) {
+            //function(req,name,surname,email,password,phoneNumber,address,CF,birthday,birthcountry,category,User,copy,done){
+            console.log('buonaseeeeeeeeera');
             findOrCreateUser = function(){
                 // find a user in Mongo with provided username
-                Utente.findOne({ email : email }, function(err, user) {
+                Utente.findOne({ email : username }, function(err, user) {
                     // In case of any error, return using the done method
                     if (err){
                         console.log('Error in SignUp: '+err);
-                        return done(err);
+                        return done(err);   
                     }
                     // already exists
                     if (user) {
@@ -30,17 +32,17 @@ module.exports = function(passport){
                         var newUser = new Utente();
 
                         // set the user's local credentials
-                        newUser.email = email;
+                        newUser.email = username;
                         newUser.password = createHash(password);
-                        newUser.name=name;
-                        newUser.cognom=surname;
-                        newUser.telefono=phoneNumber;
-                        newUser.indirizzo=address;
-                        newUser.codicefiscale=CF;
-                        newUser.dataNascita=birthday;
-                        newUser.luogoNascita=birthcountry;
-                        newUser.esenzioni=category;
-                        newUser.tipoUtente=User;
+                        newUser.name=req.body.name;
+                        newUser.cognome=req.body.surname;
+                        newUser.telefono=req.body.phoneNumber;
+                        newUser.indirizzo=req.body.address;
+                        newUser.codicefiscale=req.body.CF;
+                        newUser.dataNascita=req.body.birthday;
+                        newUser.luogoNascita=req.body.birthcountry;
+                        newUser.esenzioni=req.body.category;
+                        newUser.tipoUtente=req.body.User;
                         newUser.admin=false;
                         //newUser.nome = nome;
 

@@ -25,6 +25,8 @@ RUN npm install xml2js --save
 
 RUN npm audit fix --save
 
+RUN npm install morgan --save
+
 
 COPY . .
 

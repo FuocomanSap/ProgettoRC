@@ -27,7 +27,7 @@ function CheckLogged(req, res, next) {
 //function that check if a user is the an Admin
 function CheckUserType(req,res){
     if(req.isAuthenticated()){
-        if(req.user.email=="doc") return 2;
+        if(req.user.admin=="true") return 2;
         else return 1;
     }
     else return 0;
@@ -79,7 +79,7 @@ module.exports = function(passport){
     });
 
 
-    router.post('/register', passport.authenticate('signup', {
+    router.post('/register', passport.authenticate('signup', {        
         successRedirect: '/login',
         failureRedirect: '/register',
         failureFlash : true,

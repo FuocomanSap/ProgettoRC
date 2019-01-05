@@ -1,11 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const logger = require('morgan');
 const app = express();
 
 // Using cookieParser
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
+
+//
+app.use(logger('dev'));
 
 // Using flash middleware
 var flash = require('connect-flash');
@@ -55,7 +59,7 @@ const Utente = require('./models/Utente');
 
 // Using routes
 //app.use('/', routes);
-app.use('/',doctor_routes);
+app.use('/', doctor_routes);
 app.use('/', fbroutes);
 app.use('/', identistcare);
 

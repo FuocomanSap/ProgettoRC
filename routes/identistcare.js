@@ -17,7 +17,7 @@ function JWTAuth(req,res) {
     );
 
     // return the JWT token for the future API calls
-    res.render('ProgettoLTW/afterLogin/test.html', { user: req.user.nome, token: token });
+    res.render('ProgettoLTW/patient/gentoken.html', { user: req.user.nome, token: token });
 }
 
 
@@ -129,13 +129,19 @@ module.exports = function(passport){
 	});
 
     //REST API WITH JWT SERVICE
-    router.get('/apilogin', CheckLoggedChat, function(req, res){
-		res.render('ProgettoLTW/afterLogin/test.html', { user: req.user.nome, token: "not generated yet" });
+    router.get('/gentoken', CheckLoggedChat, function(req, res){
+		res.render('ProgettoLTW/patient/gentoken.html', { user: req.user.nome, token: "not generated yet" });
     });
     
-    router.post('/apilogin', CheckLoggedChat, JWTAuth);
-    router.post('/api', middleware.checkToken, function(req, res){
-        res.render('ProgettoLTW/patient/cartellaclinica.html');
+    router.post('/gentoken', CheckLoggedChat, JWTAuth);
+    
+
+    router.get('/cartellaclinica', function(req, res){
+		res.render('ProgettoLTW/patient/apicartellaclinica.html', { user: req.user.nome });
+    });
+
+    router.post('/cartellaclinica', middleware.checkToken, function(req, res){
+        res.render('ProgettoLTW/patient/cartellaclinica.html',  { user: req.user });
     });
 
 	return router;

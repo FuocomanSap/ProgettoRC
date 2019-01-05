@@ -50,8 +50,8 @@
 						<li>
 								<a id="paginacorrente" href="/" class="icon fa-angle-down"> Benvenuto, <span id="log"><%= user %></span> </a>
 								<ul>
-									<li><a href="/prenota">Prenota una visita</a></li>
-									<li><a href="/gentoken">Genera token</a></li>
+                                    <li><a href="/prenota">Prenota una visita</a></li>
+                                    <li><a href="/gentoken">Genera token</a></li>
 									<li><a href="/cartellaclinica">La mia cartella</a></li>
 									<li><a href="/medchat">Parla con un dottore</a></li>
 									<li><a href="/impostazioni">Impostazioni</a></li>
@@ -59,59 +59,30 @@
 								</ul>
 							</li>
 					</ul>
-				</nav>
-
-			
-			</header>
-
-        
-        <!--form di prenotazione-->
-
-
-        <section id="format" class="wrapper style1">
+				</nav>	
+            </header>
+            <br>
+            <br>
+            <br>
+            <section id="format" class="wrapper style1">
             <div class="container">
-                <header class="major">
-                    <h2>PRENOTA QUI LA TUA VISITA</h2>
-                    <section>
-                            <form method="post" action="" name="registerForm" onsubmit="">
-                                
-                                <div class="row uniform">
-									<div class="12u" >
-										<input placeholder="Data della visita" type="text" name="DataVisita" value=""  onfocus="(this.type='date')" required/>
-									</div>
-								</div>
-								
-								<div class="row uniform">
-									<div class="6u 12u(1)">
-										<input type="checkbox" id="copythismail" name="copythismail" value="true">
-										<label for="copythismail">Mandami una email di questa registrazione</label>
-									</div>
-								</div>
-                                
-                                <div class="row uniform">
-                                    <div class="12u">
-                                        <textarea name="message" id="message" placeholder="Inserisci qui le tue comunicazioni" rows="6"></textarea>
-                                    </div>
-                                </div>
-                                
-                                <div class="row uniform">
-                                    <div class="4u 12u(1)">
-                                        <ul class="actions">
-                                            <li><input type="submit" value="Invia" /></li>
-                                            <li><input type="reset" value="Resetta campi" class="alt" /></li>
-                                        </ul>
-                                    </div>
-								</div>
 
-                            </form>
-                        </section>
+            <p>Premi il pulsante per generare il tuo token!</p>
 
+            <form method="POST"  action="/gentoken" name="form">
+                <div class="row uniform">
+                    <div class="6u 12u(1)">
+                        <input type="submit" value="Genera Token" />
+                    </div>
+                </div>
+            </form>
 
-
-
-
-        
-        <!--fine form di prenotazione-->
+            <p>Il token è:</p>
+            <ul>
+            <li><%= token %></li> 
+            </ul>
+            </div>
+            </section>
 
 		<!-- Footer -->
         <footer id="footer">

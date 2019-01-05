@@ -37,21 +37,19 @@ function CheckUserType(req,res){
 
 module.exports = function(passport){
 
-	
-	
-	//test su pagina del doctor
+	/*
 	router.get('/cartellaclinica',function(req, res){
         var type = CheckUserType(req,res);
-        if(type==2)	res.render('https://media.giphy.com/media/muKS0FZTV8Ih2/giphy.gif', { user: req.user.nome });
-        if(type==1) res.render('ProgettoLTW/patient/cartellaclinica.html', { user: req.user.nome });
-        else res.render('https://media.giphy.com/media/muKS0FZTV8Ih2/giphy.gif', { user: req.user.nome });
+        if(type==2)	res.render('ProgettoLTW/index.html');
+        if(type==1) res.render('ProgettoLTW/patient/apicartellaclinica.html', { user: req.user.nome });
+        else res.render('ProgettoLTW/index.html');
     });
-
+    */
     router.get('/prenota',function(req, res){
         var type = CheckUserType(req,res);
-        if(type==2)	res.render('https://media.giphy.com/media/muKS0FZTV8Ih2/giphy.gif', { user: req.user.nome });
+        if(type==2)	res.render('ProgettoLTW/index.html');
         if(type==1) res.render('ProgettoLTW/patient/prenota.html', { user: req.user.nome });
-        else res.render('https://media.giphy.com/media/muKS0FZTV8Ih2/giphy.gif', { user: req.user.nome });
+        else res.render('ProgettoLTW/index.html');
     });
 
     

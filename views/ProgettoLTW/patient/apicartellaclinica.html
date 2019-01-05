@@ -20,19 +20,11 @@
 		<link rel="stylesheet" href="stylesheets/css/style.css" />
 		<link rel="stylesheet" href="stylesheets/css/style-xlarge.css" />
 		
-		<!-- funzione che valida la form-->
-		<script language="JavaScript">
-				
-			
-				
-			</script>
-
 
 	</head>
 	
 
 	<body class="landing">
-		<script type="text/javascript">updateAfterLoginPage();</script>
 		<!-- Header -->
 			<header id="header" class="skel-layers-fixed">
 					<h1 >
@@ -50,8 +42,8 @@
 						<li>
 								<a id="paginacorrente" href="/" class="icon fa-angle-down"> Benvenuto, <span id="log"><%= user %></span> </a>
 								<ul>
-									<li><a href="/prenota">Prenota una visita</a></li>
-									<li><a href="/gentoken">Genera token</a></li>
+                                    <li><a href="/prenota">Prenota una visita</a></li>
+                                    <li><a href="/gentoken">Genera token</a></li>
 									<li><a href="/cartellaclinica">La mia cartella</a></li>
 									<li><a href="/medchat">Parla con un dottore</a></li>
 									<li><a href="/impostazioni">Impostazioni</a></li>
@@ -59,59 +51,35 @@
 								</ul>
 							</li>
 					</ul>
-				</nav>
-
-			
-			</header>
-
-        
-        <!--form di prenotazione-->
-
-
-        <section id="format" class="wrapper style1">
+				</nav>	
+            </header>
+            <br>
+            <br>
+            <br>
+            
+            <section id="format" class="wrapper style1">
             <div class="container">
-                <header class="major">
-                    <h2>PRENOTA QUI LA TUA VISITA</h2>
-                    <section>
-                            <form method="post" action="" name="registerForm" onsubmit="">
-                                
-                                <div class="row uniform">
-									<div class="12u" >
-										<input placeholder="Data della visita" type="text" name="DataVisita" value=""  onfocus="(this.type='date')" required/>
-									</div>
-								</div>
-								
-								<div class="row uniform">
-									<div class="6u 12u(1)">
-										<input type="checkbox" id="copythismail" name="copythismail" value="true">
-										<label for="copythismail">Mandami una email di questa registrazione</label>
-									</div>
-								</div>
-                                
-                                <div class="row uniform">
-                                    <div class="12u">
-                                        <textarea name="message" id="message" placeholder="Inserisci qui le tue comunicazioni" rows="6"></textarea>
-                                    </div>
-                                </div>
-                                
-                                <div class="row uniform">
-                                    <div class="4u 12u(1)">
-                                        <ul class="actions">
-                                            <li><input type="submit" value="Invia" /></li>
-                                            <li><input type="reset" value="Resetta campi" class="alt" /></li>
-                                        </ul>
-                                    </div>
-								</div>
+                <p>Mi dispiace, questa API è riservata solo ai clienti con il token.</p>
+            <br>
+            <p>Se ancora non ce l'hai <a href="/gentoken"> ottienilo subito! </a> </p>
 
-                            </form>
-                        </section>
-
-
-
-
-
+            <br>
+            <br>
+            <p>Inserisci il tuo token e accedi alla tua cartella clinica!</p>
+            <form method="post" action="/cartellaclinica" name="form2">
         
-        <!--fine form di prenotazione-->
+                <div class="6u 12u(3)">
+                        <input type="token" name="token" value="" placeholder="Token"  required/>
+                    </div>
+                
+                <div class="row uniform">
+                    <div class="6u 12u(1)">
+                        <input type="submit" value="Utilizza API" />
+                    </div>
+                </div>
+            </form>
+            </div>
+            </section>
 
 		<!-- Footer -->
         <footer id="footer">
@@ -122,7 +90,7 @@
             </ul>
             <ul class="menu">
                 <li><a href="/">Home</a></li>
-                <li><a href="/login">Da decidere</a></li>
+                <li><a href="/login">Login</a></li>
                 <li><a href="/contatti">Contatti</a></li>
             </ul>
             <span class="copyright">

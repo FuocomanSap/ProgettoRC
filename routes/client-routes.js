@@ -1,24 +1,32 @@
 var express = require('express');
 var router = express.Router();
-//const Item = require('../models/Item');
 const Utente = require('../models/Utente');
 
-// Function that checks if a user is authenticated
-function CheckAuth(req, res, next) {
-	if (req.isAuthenticated()){
-    console.log("L'utente è loggato");
-    return next(); 
-  } else {
-    console.log("L'utente non è loggato");
-	  res.redirect('/');
-  }
+// JWT configuration
+let jwt = require('jsonwebtoken');
+let config = require('./config');
+let middleware = require('./jwtmiddleware');
+
+function JWTAuth(req,res) {
+    let username = req.user.email;
+    let password = req.user.password;
+    
+    let token = jwt.sign({username: username, password: password},
+    config.secret,
+    { expiresIn: '5m' // expires in 5 mins
+    }
+    );
+
+    // return the JWT token for the future API calls
+    res.render('ProgettoLTW/patient/gentoken.html', { user: req.user.nome, token: token });
 }
+
 
 // Function that checks if a user is logged and redirects him to the right page
 // (if he tries to access pre-login pages)
 function CheckLogged(req, res, next) {
-	if (req.isAuthenticated()){
-    res.redirect('/home');
+	if (!req.isAuthenticated()){
+    res.redirect('/');
   } else {
     return next(); 
   }
@@ -34,17 +42,30 @@ function CheckUserType(req,res){
 }
 
 
-
 module.exports = function(passport){
 
-	/*
+	//REST API WITH JWT SERVICE
+    router.get('/gentoken', CheckLogged, function(req, res){
+		res.render('ProgettoLTW/patient/gentoken.html', { user: req.user.nome, token: "not generated yet" });
+    });
+    
+    router.post('/gentoken', CheckLogged, JWTAuth);
+    
+    router.get('/apicartellaclinica', middleware.checkToken, function(req, res){
+        res.json({
+            success: true,
+            decoded: req.decoded,
+            message: 'Grazie per aver usato la nostra api!'
+          });
+    });
+
 	router.get('/cartellaclinica',function(req, res){
         var type = CheckUserType(req,res);
         if(type==2)	res.render('ProgettoLTW/index.html');
-        if(type==1) res.render('ProgettoLTW/patient/apicartellaclinica.html', { user: req.user.nome });
+        if(type==1) res.render('ProgettoLTW/patient/cartellaclinica.html', { user: req.user });
         else res.render('ProgettoLTW/index.html');
     });
-    */
+    
     router.get('/prenota',function(req, res){
         var type = CheckUserType(req,res);
         if(type==2)	res.render('ProgettoLTW/index.html');

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <p>BENVENUTO NELLA HOME!</p>
+    <ul>
+    <li><%= user %></li> 
+    </ul>
+    <br>
+    
+    <p>PREMI IL PULSANTE PER GENERARE IL TOKEN!</p>
+
+    <form method="POST"  action="/apilogin" name="form">
+        <div class="row uniform">
+            <div class="6u 12u(1)">
+                <input type="submit" value="Genera Token" />
+            </div>
+        </div>
+    </form>
+
+    <p>YOUR TOKEN IS:</p>
+    <ul>
+    <li><%= token %></li> 
+    </ul>
+
+    <p>INSERISCI IL TUO TOKEN PER ACCEDERE ALLE API!</p>
+
+    <form method="post" action="/api" name="form2">
+
+        <div class="6u 12u(3)">
+                <input type="token" name="token" value="" placeholder="Token"  required/>
+            </div>
+        
+        <div class="row uniform">
+            <div class="6u 12u(1)">
+                <input type="submit" value="Utilizza API" />
+            </div>
+        </div>
+    </form>
+
+
+</body>
+</html>

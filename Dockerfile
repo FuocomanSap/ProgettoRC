@@ -27,6 +27,8 @@ RUN npm audit fix --save
 
 RUN npm install morgan --save
 
+RUN npm install jsonwebtoken --save
+
 
 COPY . .
 

@@ -1,7 +1,26 @@
 var express = require('express');
 var router = express.Router();
-//const Item = require('../models/Item');
 const Utente = require('../models/Utente');
+
+// JWT configuration
+let jwt = require('jsonwebtoken');
+let config = require('./config');
+let middleware = require('./jwtmiddleware');
+
+function JWTAuth(req,res) {
+    let username = req.user.email;
+    
+    let token = jwt.sign({username: username},
+    config.secret,
+    { expiresIn: '24h' // expires in 24 hours
+    }
+    );
+
+    // return the JWT token for the future API calls
+    res.render('ProgettoLTW/afterLogin/test.html', { user: req.user.nome, token: token });
+}
+
+
 
 // Function that checks if a user is authenticated
 function CheckAuth(req, res, next) {
@@ -33,8 +52,7 @@ function CheckUserType(req,res){
     else return 0;
 }
 
-//function that check
-//function that checks if a user is an Admin
+// Function that checks if user can log chatbot
 function CheckLoggedChat(req, res, next) {
 	if (!req.isAuthenticated()){
     res.redirect('/');
@@ -42,6 +60,7 @@ function CheckLoggedChat(req, res, next) {
     return next(); 
   }
 }
+
 
 
 
@@ -109,6 +128,15 @@ module.exports = function(passport){
 		res.render('Chat/chat.html');
 	});
 
+    //REST API WITH JWT SERVICE
+    router.get('/apilogin', CheckLoggedChat, function(req, res){
+		res.render('ProgettoLTW/afterLogin/test.html', { user: req.user.nome, token: "not generated yet" });
+    });
+    
+    router.post('/apilogin', CheckLoggedChat, JWTAuth);
+    router.post('/api', middleware.checkToken, function(req, res){
+        res.render('ProgettoLTW/patient/cartellaclinica.html');
+    });
 
 	return router;
 }

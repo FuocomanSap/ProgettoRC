@@ -33,6 +33,16 @@ function CheckUserType(req,res){
     else return 0;
 }
 
+//function that check
+//function that checks if a user is an Admin
+function CheckLoggedChat(req, res, next) {
+	if (!req.isAuthenticated()){
+    res.redirect('/');
+  } else {
+    return next(); 
+  }
+}
+
 
 
 module.exports = function(passport){
@@ -95,7 +105,7 @@ module.exports = function(passport){
 		res.redirect('/');
 	});
 
-    router.get('/medchat', CheckLogged, function(req, res){
+    router.get('/medchat', CheckLoggedChat, function(req, res){
 		res.render('Chat/chat.html', { user: req.user });
 	});
 

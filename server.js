@@ -48,7 +48,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Connecting to MongoDB
 mongoose
   .connect(
-    'mongodb://mongo:27017/docker-node-mongo',
+    'mongodb://mongo:27017/identistcare',
     { useNewUrlParser: true }
   )
   .then(() => console.log('MongoDB Connected'))
@@ -63,7 +63,7 @@ app.use('/', doctor_routes);
 app.use('/', fbroutes);
 app.use('/', identistcare);
 
-const port = 3000;
+const port = 80;
 
 app.listen(port, () => console.log('Server is running on port 80 ...'));
 

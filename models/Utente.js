@@ -39,6 +39,9 @@ const UtenteSchema = new Schema({
   tipoUtente:{
     type: String,
   },
+  sesso:{
+    type: String,
+  },
   admin:{
     type:Boolean,
     default: false

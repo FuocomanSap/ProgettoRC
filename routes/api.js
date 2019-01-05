@@ -4,21 +4,24 @@ const Utente = require('../models/Utente');
 
 module.exports = function(passport){
 
-	// Redirect the user to Facebook for authentication.  When complete,
-    // Facebook will redirect the user back to the application at
-    //     /auth/facebook/callback
-    
-    // Facebook will redirect the user to this URL after approval.  Finish the
-    // authentication process by attempting to obtain an access token.  If
-    // access was granted, the user will be logged in.  Otherwise,
-        // authentication has failed.
-    
-        router.get('/dottori',function(req, res){
-            Utente.find({ admin: 'false' },function (err, docs) {
+    //api per richiedere tutti i dottori
+    //nel caso specifico possiamo scegliere anche il sesso della quey
+    //i valori accettati sono: 'MALE,FEMALE,null'
+    //ove con 'null' si i ntende tutti i dottori che lavorano
+    //nel nostro studio
+        router.get('/dottori/(:sesso)',function(req, res){
+            var sex = req.params.sesso
+            if(sex=='null'){
+                Utente.find({ admin: 'false'},function (err, docs) {
+                    console.log(docs);
+                    res.json(docs);});
+            }else{
+                Utente.find({ admin: 'false', sesso : sex },function (err, docs) {
                 console.log(docs);
                 res.json(docs);});
-            
+            }
         });
+        
 
 
         return router;

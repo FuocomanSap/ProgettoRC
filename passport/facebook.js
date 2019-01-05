@@ -10,7 +10,7 @@ module.exports = function(passport){
         clientID: 365142850727291,
         clientSecret: "dce65e9c936588dc6c5925d3a8388224",
         callbackURL: "http://localhost/auth/facebook/callback",
-        profileFields: ['id', 'emails', 'name','birthday','hometown']
+        profileFields: ['id', 'emails', 'name','birthday','hometown','gender']
       },
       function(accessToken, refreshToken, profile, done) {
         //console.log(profile);
@@ -39,7 +39,7 @@ module.exports = function(passport){
                 newUser.indirizzo= 'da settare tramite facebbok';
                 newUser.luogoNascita = profile._json.hometown.name.split(",")[0].toUpperCase();
                 newUser.dataNascita  = profile._json.birthday;
-  
+                newUser.sesso=profile.gender.toUpperCase();
                 // Saving the user
                 newUser.save(function(err) {
                     if (err){

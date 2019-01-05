@@ -7,39 +7,22 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		
-		<script src="../js/jquery.min.js"></script>
-		<script src="../js/jquery.dropotron.min.js"></script>
-		<script src="../js/jquery.scrollgress.min.js"></script>
-		<script src="../js/jquery.scrolly.min.js"></script>
-		<script src="../js/jquery.slidertron.min.js"></script>
-		<script src="../js/skel.min.js"></script>
-		<script src="../js/skel-layers.min.js"></script>
-		<script src="../js/init.js"></script>
+		<script src="stylesheets/js/jquery.min.js"></script>
+		<script src="stylesheets/js/jquery.dropotron.min.js"></script>
+		<script src="stylesheets/js/jquery.scrollgress.min.js"></script>
+		<script src="stylesheets/js/jquery.scrolly.min.js"></script>
+		<script src="stylesheets/js/jquery.slidertron.min.js"></script>
+		<script src="stylesheets/js/skel.min.js"></script>
+		<script src="stylesheets/js/skel-layers.min.js"></script>
+		<script src="stylesheets/js/init.js"></script>
 
-		<link rel="stylesheet" href="../css/skel.css" />
-		<link rel="stylesheet" href="../css/style.css" />
-		<link rel="stylesheet" href="../css/style-xlarge.css" />
-		<script type="text/javascript" lang="javascript" src="../js/database.js"></script>
-
+		<link rel="stylesheet" href="stylesheets/css/skel.css" />
+		<link rel="stylesheet" href="stylesheets/css/style.css" />
+		<link rel="stylesheet" href="stylesheets/css/style-xlarge.css" />
+		
 		<!-- funzione che valida la form-->
 		<script language="JavaScript">
-				function valida_form_prenota(){
-					if(dataIsfree(document.registerForm.DataVisita.value)==false){
-						window.alert("Data non disponibile");
-						return false;
-					}
-					else{
-						if(document.registerForm.copythismail.checked) {
-							sendMailto(getCurrentMail(),"ciao");
-							return true;
-						}
-						else{
-							
-						 return true;
-						}
-
-					}
-				}
+				
 			
 				
 			</script>
@@ -54,7 +37,7 @@
 			<header id="header" class="skel-layers-fixed">
 					<h1 >
 						<a href="/index.html">
-						<input type="image" src="/images/tooth.png" width="35" height="35">
+						<input type="image" src="stylesheets/images/tooth.png" width="35" height="35">
 						iDentistCare
 						</a>
 					</h1>
@@ -70,14 +53,13 @@
 									<li><a href="/prenota">Prenota una visita</a></li>
 									<li><a href="/cartellaclinica">La mia cartella</a></li>
 									<li><a href="/impostazioni">Impostazioni</a></li>
-									<li><a href="/logout" onclick="removeLogged()">Logout</a></li>
+									<li><a href="/logout" >Logout</a></li>
 								</ul>
 							</li>
 					</ul>
 				</nav>
 
-				<!--ho aggiutno questa funzione per settare il nome ma non credo vada bene come e' scritta adesso-->
-				<script language="JavaScript"> setNome(); </script>
+			
 			</header>
 
         
@@ -89,7 +71,7 @@
                 <header class="major">
                     <h2>PRENOTA QUI LA TUA VISITA</h2>
                     <section>
-                            <form method="post" action="" name="registerForm" onsubmit="return valida_form_prenota();">
+                            <form method="post" action="" name="registerForm" onsubmit="">
                                 
                                 <div class="row uniform">
 									<div class="12u" >

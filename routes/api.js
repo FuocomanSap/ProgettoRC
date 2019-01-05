@@ -12,14 +12,4 @@ module.exports = function(passport){
     // authentication process by attempting to obtain an access token.  If
     // access was granted, the user will be logged in.  Otherwise,
 		// authentication has failed.
-
-    router.get('/dottori',function(req, res) {
-    // Successful authentication, redirect home.
-
-    return res.Utente.find({ admin :'false'});
-       
-});
-
-
-	return router;
 }

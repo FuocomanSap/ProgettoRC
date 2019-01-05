@@ -1,5 +1,6 @@
 var LocalStrategy   = require('passport-local').Strategy;
 const Utente = require('../models/Utente');
+const Cartella = require('../models/Cartella');
 var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport){
@@ -52,8 +53,23 @@ module.exports = function(passport){
                                 throw err;  
                             }
                             console.log('User Registration succesful');    
-                            return done(null, newUser);
                         });
+
+                        var newCartella = new Cartella();
+                        newCartella.email = email;
+                        newCartella.notemedico = "Lavarsi sempre i denti!";
+                        newCartella.operazioni = "Nessuna operazione";
+
+                        // save cartella
+                        newCartella.save(function(err) {
+                            if (err){
+                                console.log('Error in Saving user: '+err);  
+                                throw err;  
+                            }
+                            console.log('User Registration succesful');    
+                        });
+
+                        return done(null, newUser);
                     }
                 });
             };

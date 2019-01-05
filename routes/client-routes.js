@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Utente = require('../models/Utente');
+const Cartella = require('../models/Cartella');
 
 // JWT configuration
 let jwt = require('jsonwebtoken');
@@ -52,11 +53,15 @@ module.exports = function(passport){
     router.post('/gentoken', CheckLogged, JWTAuth);
     
     router.get('/apicartellaclinica', middleware.checkToken, function(req, res){
-        res.json({
-            success: true,
-            decoded: req.decoded,
-            message: 'Grazie per aver usato la nostra api!'
-          });
+        Cartella.findOne({ email : req.decoded.username }, function(err, cart) {
+            Utente.findOne({ email : cart.email }, function(err, datis) {
+                var dati= datis;
+                res.json({
+                    info: dati,
+                    cartella: cart
+                });
+            });
+        });
     });
 
 	router.get('/cartellaclinica',function(req, res){

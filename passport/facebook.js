@@ -1,5 +1,6 @@
 var LocalStrategy   = require('passport-local').Strategy;
 const Utente = require('../models/Utente');
+const Cartella = require('../models/Cartella');
 var bCrypt = require('bcrypt-nodejs');
 
 var FacebookStrategy = require('passport-facebook').Strategy;
@@ -36,7 +37,8 @@ module.exports = function(passport){
                 newUser.cognome = profile.name.familyName;
                 
                 // Default values for facebook users (just a test)
-                newUser.indirizzo= 'da settare tramite facebbok';
+                newUser.indirizzo= 'Via delle vie 24';
+                
                 newUser.luogoNascita = profile._json.hometown.name.split(",")[0].toUpperCase();
                 newUser.dataNascita  = profile._json.birthday;
                 newUser.sesso=profile.gender.toUpperCase();
@@ -47,8 +49,22 @@ module.exports = function(passport){
                         throw err;  
                     }
                     console.log('User Registration succesful');    
-                    return done(null, newUser);
                 });
+
+                var newCartella = new Cartella();
+                newCartella.email = email;
+                newCartella.notemedico = "Lavarsi sempre i denti!";
+                newCartella.operazioni = "Nessuna operazione";
+
+                // save cartella
+                newCartella.save(function(err) {
+                    if (err){
+                        console.log('Error in Saving user: '+err);  
+                        throw err;  
+                    }
+                    console.log('User Registration succesful');    
+                });
+                return done(null, newUser);
             }
   
         });

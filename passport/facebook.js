@@ -36,9 +36,9 @@ module.exports = function(passport){
                 newUser.cognome = profile.name.familyName;
                 
                 // Default values for facebook users (just a test)
-                
-                newUser.indirizzo =profile._json.hometown.name;
-                newUser.codicefiscale = profile._json.birthday;
+                newUser.indirizzo= 'da settare tramite facebbok';
+                newUser.luogoNascita = profile._json.hometown.name;
+                newUser.dataNascita  = profile._json.birthday;
   
                 // Saving the user
                 newUser.save(function(err) {

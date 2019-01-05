@@ -11,5 +11,15 @@ module.exports = function(passport){
     // Facebook will redirect the user to this URL after approval.  Finish the
     // authentication process by attempting to obtain an access token.  If
     // access was granted, the user will be logged in.  Otherwise,
-		// authentication has failed.
-}
+        // authentication has failed.
+    
+        router.get('/dottori',function(req, res){
+            Utente.find({ admin: 'false' },function (err, docs) {
+                console.log(docs);
+                res.json(docs);});
+            
+        });
+
+
+        return router;
+    }

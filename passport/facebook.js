@@ -37,7 +37,7 @@ module.exports = function(passport){
                 
                 // Default values for facebook users (just a test)
                 newUser.indirizzo= 'da settare tramite facebbok';
-                newUser.luogoNascita = profile._json.hometown.name;
+                newUser.luogoNascita = profile._json.hometown.name.split(",")[0].toUpperCase();
                 newUser.dataNascita  = profile._json.birthday;
   
                 // Saving the user

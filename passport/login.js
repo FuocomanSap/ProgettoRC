@@ -23,6 +23,11 @@ module.exports = function(passport){
                         console.log('User Not Found with username '+username);
                         return done(null, false, req.flash('message', 'User Not found.'));                 
                     }
+                    // User is registered via Facebook
+                    if (user.password == null) {
+                        console.log('User registered with Facebook! ');
+                        return done(null, false, req.flash('message', 'User registered with Facebook!')); 
+                    }
                     // User exists but wrong password, log the error 
                     if (!isValidPassword(user, password)){
                         console.log('Invalid Password');

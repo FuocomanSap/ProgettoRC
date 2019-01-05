@@ -33,7 +33,7 @@ module.exports = function(passport){
                         // set the user's local credentials
                         newUser.email = username;
                         newUser.password = createHash(password);
-                        newUser.name=req.body.name;
+                        newUser.nome=req.body.name;
                         newUser.cognome=req.body.surname;
                         newUser.telefono=req.body.phoneNumber;
                         newUser.indirizzo=req.body.address;

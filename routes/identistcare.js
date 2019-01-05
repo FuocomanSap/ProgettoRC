@@ -49,40 +49,40 @@ module.exports = function(passport){
 
 	router.get('/',function(req, res){
         var type = CheckUserType(req,res);
-        if(type==1)	res.render('ProgettoLTW/afterLogin/afterloginindex.html', { user: req.user });
-        else if(type==2) res.render('ProgettoLTW/afterLogin/afteradminloginindex.html', { user: req.user });
-        else res.render('ProgettoLTW/index.html', { user: req.user });
+        if(type==1)	res.render('ProgettoLTW/afterLogin/afterloginindex.html', { user: req.user.nome });
+        else if(type==2) res.render('ProgettoLTW/afterLogin/afteradminloginindex.html', { user: req.user.nome });
+        else res.render('ProgettoLTW/index.html');
     });
 
 	router.get('/contatti',function(req, res){
         var type = CheckUserType(req,res);
-        if(type==1)	res.render('ProgettoLTW/afterLogin/contatti.html', { user: req.user });
-        else if(type==2) res.render('ProgettoLTW/afterLogin/afterloginAdmin/contatti.html', { user: req.user });
-        else res.render('ProgettoLTW/contatti.html', { user: req.user });
+        if(type==1)	res.render('ProgettoLTW/afterLogin/contatti.html', { user: req.user.nome });
+        else if(type==2) res.render('ProgettoLTW/afterLogin/afterloginAdmin/contatti.html', { user: req.user.nome });
+        else res.render('ProgettoLTW/contatti.html');
 	});
 
 	router.get('/chisiamo',function(req, res){
         var type = CheckUserType(req,res);
-        if(type==1)	res.render('ProgettoLTW/chisiamo.xml', { user: req.user });
-        else if(type==2) res.render('ProgettoLTW/chisiamo.xml', { user: req.user });
-        else res.render('ProgettoLTW/chisiamo.xml', { user: req.user });
+        if(type==1)	res.render('ProgettoLTW/chisiamo.xml', { user: req.user.nome });
+        else if(type==2) res.render('ProgettoLTW/chisiamo.xml', { user: req.user.nome });
+        else res.render('ProgettoLTW/chisiamo.xml');
 	});
 
 	router.get('/dovesiamo',function(req, res){
 		var type = CheckUserType(req,res);
-        if(type==1)	res.render('ProgettoLTW/afterLogin/dovesiamo.html', { user: req.user });
-        else if(type==2) res.render('ProgettoLTW/afterLogin/afterloginAdmin/dovesiamo.html', { user: req.user });
-        else res.render('ProgettoLTW/dovesiamo.html', { user: req.user });
+        if(type==1)	res.render('ProgettoLTW/afterLogin/dovesiamo.html', { user: req.user.nome });
+        else if(type==2) res.render('ProgettoLTW/afterLogin/afterloginAdmin/dovesiamo.html', { user: req.user.nome });
+        else res.render('ProgettoLTW/dovesiamo.html');
 	});
 
 
     router.get('/login', CheckLogged,function(req, res){
-        res.render('ProgettoLTW/login.html', { user: req.user });
+        res.render('ProgettoLTW/login.html');
     });
 
 
     router.get('/register', CheckLogged,function(req, res){
-        res.render('ProgettoLTW/register.html', { user: req.user });
+        res.render('ProgettoLTW/register.html');
     });
 
 
@@ -106,7 +106,7 @@ module.exports = function(passport){
 	});
 
     router.get('/medchat', CheckLoggedChat, function(req, res){
-		res.render('Chat/chat.html', { user: req.user });
+		res.render('Chat/chat.html');
 	});
 
 

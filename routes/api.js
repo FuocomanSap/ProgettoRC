@@ -14,12 +14,12 @@ module.exports = function(passport){
         router.get('/dottori/(:sesso)',function(req, res){
             var sex = req.params.sesso;
             if(sex=='ALL'){
-               Utente.find({ admin: 'false'})
+               Utente.find({ admin: 'true'})
                        .select('email nome cognome sesso dataNascita')
                        .exec(function(err, txs){
                         res.json(txs);});
             }else{
-                Utente.find({ admin: 'false', sesso:sex})
+                Utente.find({ admin: 'true', sesso:sex})
                        .select('email nome cognome sesso dataNascita')
                        .exec(function(err, txs){
                         res.json(txs);});

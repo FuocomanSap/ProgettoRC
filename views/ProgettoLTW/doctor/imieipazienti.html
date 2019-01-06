@@ -2,169 +2,131 @@
 
 <html>
 
-	<head>
-		<title> </title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<script src="stylesheets/js/jquery.min.js"></script>
-		<script src="stylesheets/js/jquery.dropotron.min.js"></script>
-		<script src="stylesheets/js/jquery.scrollgress.min.js"></script>
-		<script src="stylesheets/js/jquery.scrolly.min.js"></script>
-		<script src="stylesheets/js/jquery.slidertron.min.js"></script>
-		<script src="stylesheets/js/skel.min.js"></script>
-		<script src="stylesheets/js/skel-layers.min.js"></script>
-		<script src="stylesheets/js/init.js"></script>
-		
-			<link rel="stylesheet" href="stylesheets/css/skel.css" />
-			<link rel="stylesheet" href="stylesheets/css/style.css" />
-			<link rel="stylesheet" href="stylesheets/css/style-xlarge.css" />
+<head>
+	<title> </title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<script src="stylesheets/js/jquery.min.js"></script>
+	<script src="stylesheets/js/jquery.dropotron.min.js"></script>
+	<script src="stylesheets/js/jquery.scrollgress.min.js"></script>
+	<script src="stylesheets/js/jquery.scrolly.min.js"></script>
+	<script src="stylesheets/js/jquery.slidertron.min.js"></script>
+	<script src="stylesheets/js/skel.min.js"></script>
+	<script src="stylesheets/js/skel-layers.min.js"></script>
+	<script src="stylesheets/js/init.js"></script>
+
+	<link rel="stylesheet" href="stylesheets/css/skel.css" />
+	<link rel="stylesheet" href="stylesheets/css/style.css" />
+	<link rel="stylesheet" href="stylesheets/css/style-xlarge.css" />
 
 
-		
 
-	</head>
 
-	<body class="landing">
-		
-		<!-- Header -->
-		<header id="header" class="skel-layers-fixed">
-			<h1>
-				<a id="logohome" href="/">
-					<input type="image" src="stylesheets/images/tooth.png" width="35" height="35">
-					iDentistCare
-				</a>
-			</h1>
-			<nav id="nav">
-				<ul>
-					<li><a id="paginahome" href="/">Home</a></li>
-					<li><a href="/chisiamo">Chi siamo</a></li>
-					<li><a href="/dovesiamo">Dove siamo</a></li>
-					<li><a href="/contatti">Contatti</a></li>
-					<li>
-						<a id="paginacorrente" href="/" class="icon fa-angle-down"> Benvenuto, Dr. <span id="log"><%= user %></span>
-						</a>
+</head>
 
-						
+<body class="landing">
+
+	<!-- Header -->
+	<header id="header" class="skel-layers-fixed">
+		<h1>
+			<a id="logohome" href="/">
+				<input type="image" src="stylesheets/images/tooth.png" width="35" height="35">
+				iDentistCare
+			</a>
+		</h1>
+		<nav id="nav">
+			<ul>
+				<li><a id="paginahome" href="/">Home</a></li>
+				<li><a href="/chisiamo">Chi siamo</a></li>
+				<li><a href="/dovesiamo">Dove siamo</a></li>
+				<li><a href="/contatti">Contatti</a></li>
+				<li>
+					<a id="paginacorrente" href="/" class="icon fa-angle-down"> Benvenuto, Dr. <span id="log">
+							<%= user %></span>
+					</a>
+
+
+
+					<ul>
+						<li><a id="next" href="/imieipazienti">I miei pazienti</a></li>
+						<li><a href="/impostazioni">Impostazioni</a></li>
+						<li><a href="/logout">Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+
+
+
+
+	</header>
+
+
+	<!--lista clienti-->
+	<section id="format" class="wrapper style1">
+		<div class="container">
+			<header class="major">
+				<h2>Lista Clienti</h2>
+				<section>
+					<form method="POST" action="" name="myPazienti" onsubmit="">
+						<div class="row uniform">
+							<div class="12u(1)" id="Lista">
+
+							</div>
+						</div>
 
 						<ul>
-							<li><a id="next" href="/imieipazienti">I miei pazienti</a></li>
-							<li><a href="/impostazioni">Impostazioni</a></li>
-							<li><a href="/logout" >Logout</a></li>
+							<% items.forEach(function(item) { %>
+							<li>
+								<%= item.nome %> -  <%= item.cognome %> - <%= item.email %> - <%= item.sesso %>
+							</li>
+							<% }); %>
 						</ul>
-					</li>
-				</ul>
-			</nav>
-
-			
-			<script language="JavaScript" >
-				function takeChecked(){
-					//questa funzione prende il paziente checked e lo elimina refreshando la pagina
-					var array = document.getElementsByName("User");
-					
-					var txt = "";
-					var i;
-					for (i = 0; i < array.length; i++) {
-						if (array[i].checked) {
-						//window.alert("checked: "+ array[i].id);
-							removeUser(array[i].id);
-							return location.reload();
-						}
-					}
-				}
-			</script>
-
-		</header>
-
-		
-					<!--lista clienti-->
-		<section id="format" class="wrapper style1">
-			<div class="container">
-				<header class="major">
-					<h2>Lista Clienti</h2>
-					<section>						
-						<form method="POST" action="" name="myPazienti" onsubmit="">
-							<div class="row uniform">	
-								<div class="12u(1)" id="Lista" >
-									
-								</div>
-							</div>
-
-							<div class="row uniform">
-								<div class="12u(1)">
-									<ul class="actions">
-										<li><input type="button" value="Rimuovi" name="doSomething" onclick=" return takeChecked();"></li>
-							
-									</ul>
-								</div>
-							</div>
-							<script language="JavaScript">
-								//questa funzione prmetter di popolare il tipo radio con tutti i clienti
-								var prova = '<input type="radio" id="newUser" name="User"><label for="newUser">Nuovo Cliente</label> ';
-								var Admin = localStorage.getItem("ADMIN");
-								var mailAdmin = (JSON.parse(Admin)).mail;
-								var dott = localStorage.getItem(mailAdmin);
-								var listaClienti = JSON.parse(dott).Clienti
-								var x = "";
-								
-								for (var i = 1; i < listaClienti.length; i++) {
-
-									x += '<input type="radio" id="' + listaClienti[i] + '" name="User"> <label for="' + listaClienti[i] + '"> <b>' + getNomeCognome(listaClienti[i]) + '<b></label> '
-
-								}
-								//x+=prova;
-								document.getElementById("Lista").innerHTML = x;
-								
-
-							</script>
-
-							
-						</form>
-					</section>
-				</header>
-			</div>
-		</section>
-
-
-
-						
-						
-						
-			</div>
-		</body>
-					<!--fine lista clienti-->
-		
-		
-		
-				</header>
-		</section>
 
 
 
 
-		<!-- Footer -->
-		<footer id="footer">
-			<ul class="icons">
-				<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-				<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-			</ul>
-			<ul class="menu">
-				<li><a href="/">Home</a></li>
-				<li><a href="/login">Dadecidere</a></li>
-				<li><a href="/contatti">Contatti</a></li>
-			</ul>
-			<span class="copyright">
-				LTW Project: Riccardo Caprari & Francesco Douglas
-			</span>
-		</footer>
+					</form>
+				</section>
+			</header>
+		</div>
+	</section>
 
-	</body>
+
+
+
+
+
+	</div>
+</body>
+<!--fine lista clienti-->
+
+
+
+</header>
+</section>
+
+
+
+
+<!-- Footer -->
+<footer id="footer">
+	<ul class="icons">
+		<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+		<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+		<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+	</ul>
+	<ul class="menu">
+		<li><a href="/">Home</a></li>
+		<li><a href="/login">Dadecidere</a></li>
+		<li><a href="/contatti">Contatti</a></li>
+	</ul>
+	<span class="copyright">
+		LTW Project: Riccardo Caprari & Francesco Douglas
+	</span>
+</footer>
+
+</body>
 
 </html>
-
-	
-
-
-		
-

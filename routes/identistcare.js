@@ -105,7 +105,7 @@ module.exports = function (passport) {
     });
 
     router.get('/medchat', CheckLoggedChat, function (req, res) {
-        console.log(req.user);
+        //console.log(req.user);
         res.render('Chat/chat.html', { user: req.user.admin });
     });
 

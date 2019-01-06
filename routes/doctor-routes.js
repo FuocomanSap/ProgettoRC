@@ -24,14 +24,15 @@ function CheckLogged(req, res, next) {
   }
 }
 
-//function that check if a user is the an Admin
-function CheckUserType(req,res){
-    if(req.isAuthenticated()){
-        if(req.user.email=="doc") return 2;
+//function that checks if a user is an Admin
+function CheckUserType(req, res) {
+    if (req.isAuthenticated()) {
+        if (req.user.admin == true) return 2;
         else return 1;
     }
     else return 0;
 }
+
 
 
 
@@ -43,7 +44,14 @@ module.exports = function(passport){
 	router.get('/imieipazienti',function(req, res){
         var type = CheckUserType(req,res);
         if(type==1)	res.render('https://media.giphy.com/media/muKS0FZTV8Ih2/giphy.gif', { user: req.user });
-        if(type==2) res.render('ProgettoLTW/afterLogin/afteradminloginindex.html', { user: req.user });
+        if(type==2){
+             
+             Utente.find({ admin: 'false'})
+                       .select('email nome cognome sesso dataNascita')
+                       .exec(function(err, txs){
+                        res.render('ProgettoLTW/doctor/imieipazienti.html', { user: req.user.name , items: txs });
+                    });
+        }
         else res.render('https://media.giphy.com/media/muKS0FZTV8Ih2/giphy.gif', { user: req.user });
     });
 

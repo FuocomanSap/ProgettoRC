@@ -23,8 +23,15 @@ Mapping porte nel docker-compose:
 Per muoversi all'interno del sito abbiamo definito i vari routes per le chiamate HTTP GET/POST verso il server:
 
 * ```GET /```
-    Pagina principale del sito.
-
+<pre>
+    Pagina HTML principale del sito.
+</pre>
+* ```GET /contatti```
+<pre>
+    Pagina HTML contatti dello studio.
+</pre>
+* ```GET /chisiamo```
+* ```GET /dovesiamo```
 curl -H "Authorization: Bearer $TOKEN" localhost/apicartellaclinica
 
 ## Architettura

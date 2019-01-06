@@ -11,10 +11,11 @@ var http = require('http');
 /**
  * Global variables
  */
-// latest 100 messages
+// storia degli ultimi 100 mex, il client per adesso non lo utilizza
 var history = [ ];
 // list of currently connected clients (users)
 var clients = [ ];
+var sem = 2;
 
 /**
  * Helper function for escaping input strings
@@ -51,6 +52,8 @@ var wsServer = new webSocketServer({
 // This callback function is called every time someone
 // tries to connect to the WebSocket server
 wsServer.on('request', function(request) {
+    if (sem==0) return 404;
+    sem--;
     console.log((new Date()) + ' Connection from origin ' + request.origin + '.');
 
     // accept connection - you should check 'request.origin' to make sure that
@@ -75,6 +78,7 @@ wsServer.on('request', function(request) {
             if (userName === false) { // first message sent by user is their name
                 // remember user name
                 userName = htmlEntities(message.utf8Data);
+                
                 // get random color and send it back to the user
                 userColor = colors.shift();
                 connection.sendUTF(JSON.stringify({ type:'color', data: userColor }));
@@ -113,6 +117,7 @@ wsServer.on('request', function(request) {
             clients.splice(index, 1);
             // push back user's color to be reused by another user
             colors.push(userColor);
+            sem++;
         }
     });
 

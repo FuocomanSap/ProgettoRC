@@ -59,10 +59,11 @@ $(function () {
             // from now user can start sending messages
         } else if (json.type === 'history') { // entire message history
             // insert every single message to the chat window
-            for (var i=0; i < json.data.length; i++) {
+            //decommetnare se vogliamo tenere la history
+            /*for (var i=0; i < json.data.length; i++) {
                 addMessage(json.data[i].author, json.data[i].text,
                            json.data[i].color, new Date(json.data[i].time));
-            }
+            }*/
         } else if (json.type === 'message') { // it's a single message
             input.removeAttr('disabled'); // let the user write another message
             addMessage(json.data.author, json.data.text,
@@ -73,7 +74,8 @@ $(function () {
     };
 
     /**
-     * Send mesage when user presses Enter key
+     * 
+     * per usare il tasto invio per inviare ;)
      */
     input.keydown(function(e) {
         if (e.keyCode === 13) {
@@ -103,8 +105,9 @@ $(function () {
     setInterval(function() {
         if (connection.readyState !== 1) {
             status.text('Error');
-            input.attr('disabled', 'disabled').val('Unable to comminucate '
-                                                 + 'with the WebSocket server.');
+            //input.attr('disabled', 'disabled').val('Unable to comminucate '
+            //                                     + 'with the WebSocket server.');
+            input.attr('disabled', 'disabled').val('il dottore risulta momentaneamente occupato' + 'ti preghiamo di riprovare piu tardi');
         }
     }, 3000);
 

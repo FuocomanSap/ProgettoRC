@@ -42,8 +42,8 @@ Dopo il login dei dottori:
 
 * ```GET /medchat``` Documento HTML per utilizzare livechat con websocket.
 * ```GET /imieipazienti``` Documento HTML dei pazienti del dottore.
-
-
+<br />
+<br />
 Other routes:
 
 

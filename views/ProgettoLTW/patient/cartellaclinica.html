@@ -53,16 +53,16 @@
             <!-- End Image -->
             <!-- Begin Personal Information -->
             <div class="self">
-								<h1 class="name">	<span id="nome"></span> </h1> 
-              	<h1 class="name"> <span id="cognome"></span> </h1>
+								<h1 class="name">	<span id="nome"> <%= info.nome %></span> </h1> 
+              	<h1 class="name"> <span id="cognome"><%= info.cognome %></span> </h1>
 
               <ul>
                 <h1><span>I miei dati:</span></h1>
-                <li class="ad" ><span id="indirizzo"></span></li>
-                <li><span id="luogonascita"></span> <span id="datanascita"></span> </li>
+                <li class="ad" ><span id="indirizzo"><%= info.indirizzo %></span></li>
+                <li><span id="luogonascita"></span> <span id="datanascita"><%= info.luogoNascita %></span> </li>
                 <!--<li class="mail"><span id="mail">test@gmail.com</span></li>-->
-                <li class="tel"><span id="telefono"></span></li>
-                <li >CF: <span id="codicefisc"></span></li>
+                <li class="tel"><span id="telefono"><%= info.telefono %></span></li>
+                <li >CF: <span id="codicefisc"><%= info.codicefiscale %></span></li>
               </ul>
 
           </div>
@@ -78,7 +78,11 @@
           <!-- Begin 1st Row -->
           <div class="entry">
             <h2>Note del Medico</h2>
-            <p><span id="note">Effettuare un controllo ogni mese</span></p>
+            <p><span id="note"></span><%= cart.notemedico %></p>
+          </div>
+          <div class="entry">
+            <h2>Operazioni</h2>
+            <p><span id="op"></span><%= cart.operazioni %></p>
           </div>
           <!-- End 1st Row -->
          

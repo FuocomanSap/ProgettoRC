@@ -54,7 +54,15 @@ module.exports = function(passport){
     
     router.get('/apicartellaclinica', middleware.checkToken, function(req, res){
         Cartella.findOne({ email : req.decoded.username }, function(err, cart) {
+            if (err){
+                console.log('Error getting Cartella: '+err);
+                return done(err);   
+            }
             Utente.findOne({ email : cart.email }, function(err, datis) {
+                if (err){
+                    console.log('Error getting Utente: '+err);
+                    return done(err);   
+                }
                 var dati= datis;
                 res.json({
                     info: dati,
@@ -65,10 +73,22 @@ module.exports = function(passport){
     });
 
 	router.get('/cartellaclinica',function(req, res){
-        var type = CheckUserType(req,res);
-        if(type==2)	res.render('ProgettoLTW/index.html');
-        if(type==1) res.render('ProgettoLTW/patient/cartellaclinica.html', { user: req.user });
-        else res.render('ProgettoLTW/index.html');
+        Cartella.findOne({ email : req.user.email }, function(err, cart) {
+            if (err){
+                console.log('Error getting Cartella: '+err);
+                return done(err);   
+            }
+            Utente.findOne({ email : cart.email }, function(err, datis) {
+                if (err){
+                    console.log('Error getting Utente: '+err);
+                    return done(err);   
+                }
+                var type = CheckUserType(req,res);
+                if(type==2)	res.render('ProgettoLTW/index.html');
+                if(type==1) res.render('ProgettoLTW/patient/cartellaclinica.html', { info : datis, cart : cart });
+                else res.render('ProgettoLTW/index.html');    
+            });
+        });
     });
     
     router.get('/prenota',function(req, res){

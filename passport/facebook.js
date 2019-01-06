@@ -38,6 +38,8 @@ module.exports = function(passport){
                 
                 // Default values for facebook users (just a test)
                 newUser.indirizzo= 'Via delle vie 24';
+                newUser.codicefiscale= 'ABCD123CDGE123501I';
+                newUser.telefono= '123456789';
                 
                 newUser.luogoNascita = profile._json.hometown.name.split(",")[0].toUpperCase();
                 newUser.dataNascita  = profile._json.birthday;

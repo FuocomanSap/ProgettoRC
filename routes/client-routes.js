@@ -6,7 +6,7 @@ const Cartella = require('../models/Cartella');
 // JWT configuration
 let jwt = require('jsonwebtoken');
 let config = require('./config');
-let middleware = require('./jwtmiddleware');
+
 
 function JWTAuth(req,res) {
     let username = req.user.email;
@@ -51,26 +51,6 @@ module.exports = function(passport){
     });
     
     router.post('/gentoken', CheckLogged, JWTAuth);
-    
-    router.get('/apicartellaclinica', middleware.checkToken, function(req, res){
-        Cartella.findOne({ email : req.decoded.username }, function(err, cart) {
-            if (err){
-                console.log('Error getting Cartella: '+err);
-                return done(err);   
-            }
-            Utente.findOne({ email : cart.email }, function(err, datis) {
-                if (err){
-                    console.log('Error getting Utente: '+err);
-                    return done(err);   
-                }
-                var dati= datis;
-                res.json({
-                    info: dati,
-                    cartella: cart
-                });
-            });
-        });
-    });
 
 	router.get('/cartellaclinica',function(req, res){
         Cartella.findOne({ email : req.user.email }, function(err, cart) {

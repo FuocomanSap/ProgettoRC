@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Utente = require('../models/Utente');
+let middleware = require('./jwtmiddleware');
 
 module.exports = function(passport){
 
@@ -23,6 +24,30 @@ module.exports = function(passport){
                        .exec(function(err, txs){
                         res.json(txs);});
             }
+        });
+
+
+
+        // Api che permette ai pazienti di richiedere la propria cartella
+        // clinica tramite token (implementato con JWT)
+        router.get('/apicartellaclinica', middleware.checkToken, function(req, res){
+            Cartella.findOne({ email : req.decoded.username }, function(err, cart) {
+                if (err){
+                    console.log('Error getting Cartella: '+err);
+                    return done(err);   
+                }
+                Utente.findOne({ email : cart.email }, function(err, datis) {
+                    if (err){
+                        console.log('Error getting Utente: '+err);
+                        return done(err);   
+                    }
+                    var dati= datis;
+                    res.json({
+                        info: dati,
+                        cartella: cart
+                    });
+                });
+            });
         });
         
 

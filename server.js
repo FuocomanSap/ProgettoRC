@@ -34,6 +34,7 @@ var api=require('./routes/api')(passport);
 var client_routes=require('./routes/client-routes')(passport);
 var doctor_routes=require('./routes/doctor-routes')(passport);
 var fbroutes = require('./routes/facebook-routes')(passport);
+var ocroutes = require('./routes/opencage-routes')(passport);
 var identistcare = require('./routes/identistcare')(passport);
 
 
@@ -64,6 +65,7 @@ const Utente = require('./models/Utente');
 app.use('/', client_routes);
 app.use('/', doctor_routes);
 app.use('/', fbroutes);
+app.use('/', ocroutes);
 app.use('/', identistcare);
 app.use('/', api);
 

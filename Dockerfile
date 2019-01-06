@@ -29,6 +29,7 @@ RUN npm install morgan --save
 
 RUN npm install jsonwebtoken --save
 
+RUN npm install request --save
 
 COPY . .
 

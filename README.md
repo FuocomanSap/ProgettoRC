@@ -22,16 +22,32 @@ Mapping porte nel docker-compose:
 
 Per muoversi all'interno del sito abbiamo definito i vari routes per le chiamate HTTP GET/POST verso il server:
 
-* ```GET /```
-<pre>
-    Pagina HTML principale del sito.
-</pre>
-* ```GET /contatti```
-<pre>
-    Pagina HTML contatti dello studio.
-</pre>
-* ```GET /chisiamo```
-* ```GET /dovesiamo```
+* ```GET /``` Documento HTML principale del sito.
+* ```GET /contatti``` Documento HTML dei contatti dello studio.
+* ```GET /dovesiamo``` Documento HTML della locazione dello studio.
+* ```GET /login``` Documento HTML per effettuare il login.
+* ```POST /register``` Invio dei dati di login.
+* ```GET /register``` Documento HTML per effettuare la registrazione.
+* ```POST /register``` Invio dei dati di registrazione.
+* ```GET /logout``` Effettua logout sessione e restituisce Documento HTML principale del sito.
+
+Dopo il login dei pazienti:
+
+* ```GET /gentoken``` Documento HTML che permette di generare un token per l'API con JWT.
+* ```POST /gentoken``` Invio della richiesta di generare un token.
+* ```GET /medchat``` Documento HTML per utilizzare livechat con websocket.
+* ```GET /prenota``` Documento HTML per prenotare una visita.
+
+Dopo il login dei dottori:
+
+* ```GET /medchat``` Documento HTML per utilizzare livechat con websocket.
+* ```GET /imieipazienti``` Documento HTML dei pazienti del dottore.
+
+
+Other routes:
+
+
+
 curl -H "Authorization: Bearer $TOKEN" localhost/apicartellaclinica
 
 ## Architettura

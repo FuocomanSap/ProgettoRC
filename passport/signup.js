@@ -42,7 +42,11 @@ module.exports = function(passport){
                         newUser.dataNascita=req.body.birthday;
                         newUser.luogoNascita=req.body.birthcountry.toUpperCase();
                         newUser.esenzioni=req.body.category;
-                        newUser.tipoUtente=req.body.User;
+                        console.log(req.body);
+                        //setting del sesso rtamite la radio con un easy-peezy if
+                        if(req.body.MALE) newUser.sesso="MALE";
+                        else newUser.sesso="FEMALE";
+                                            
                         newUser.admin=false;
                         //newUser.nome = nome;
 
@@ -56,7 +60,7 @@ module.exports = function(passport){
                         });
 
                         var newCartella = new Cartella();
-                        newCartella.email = email;
+                        newCartella.email = username;
                         newCartella.notemedico = "Lavarsi sempre i denti!";
                         newCartella.operazioni = "Nessuna operazione";
 

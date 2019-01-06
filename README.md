@@ -74,20 +74,28 @@ Il progetto ha la seguente architettura:
 .
 ├── bin
 │   └── www
+├── ChatBot
 ├── models
-│   └── Persona.js
+│   └── Cartella.js
+│   └── Utente.js
+├── node_modules
 ├── passport 
+│   └── facebook.js
 │   └── init.js
 │   └── login.js
 │   └── signup.js
-├── public
-│   └── images
-│   └── javascripts
-│   └── stylesheets
-├── routes 
-│   └── index.js
+├── public 
+├── routes
+│   └── api.js
+│   └── client-routes.js
+│   └── doctor-routes.js
+│   └── facebook-routes.js
+│   └── identistcare.js
+│   └── jwtmiddleware.js 
+│   └── opencage-routes.js
 ├── views
-│   └── ALL HTML FILES
+│   └── Chat
+│   └── ProgettoLTW
 ├── docker-compose.yml
 ├── Dockerfile
 ├── package-lock.json
@@ -131,3 +139,4 @@ Per utilizzare il progetto bisogna:
 * Aggiungesi al gruppo docker(```sudo usermod -aG docker $USER```)
 * Dare i permessi ai file start e stop (```chmod +x FileName```)
 * Avviare il docker container tramite il comando ```./start```
+* Per stoppare/rimuovere i container usare ```./reset``` 

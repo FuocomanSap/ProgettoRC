@@ -8,6 +8,7 @@ RUN npm install
 RUN npm install ejs --save
 RUN npm install path --save
 
+RUN npm install express --save
 RUN npm install express-session --save
 
 RUN npm install bcrypt-nodejs --save

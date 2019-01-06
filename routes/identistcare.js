@@ -62,9 +62,9 @@ module.exports = function (passport) {
 
     router.get('/chisiamo', function (req, res) {
         var type = CheckUserType(req, res);
-        if (type == 1) res.render('ProgettoLTW/chisiamo.xml', { user: req.user.nome });
-        else if (type == 2) res.render('ProgettoLTW/chisiamo.xml', { user: req.user.nome });
-        else res.render('ProgettoLTW/chisiamo.xml');
+        if (type == 1) res.render('ProgettoLTW/chisiamo.html');
+        else if (type == 2) res.render('ProgettoLTW/chisiamo.html');
+        else res.render('ProgettoLTW/chisiamo.html');
     });
 
     router.get('/dovesiamo', function (req, res) {

@@ -105,7 +105,8 @@ module.exports = function (passport) {
     });
 
     router.get('/medchat', CheckLoggedChat, function (req, res) {
-        res.render('Chat/chat.html');
+        console.log(req.user);
+        res.render('Chat/chat.html', { user: req.user.admin });
     });
 
     //funzione che genera dottori casualmente

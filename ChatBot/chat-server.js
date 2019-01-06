@@ -15,7 +15,7 @@ var http = require('http');
 var history = [ ];
 // list of currently connected clients (users)
 var clients = [ ];
-var sem = 2;
+var sem = 1;
 
 /**
  * Helper function for escaping input strings
@@ -52,8 +52,7 @@ var wsServer = new webSocketServer({
 // This callback function is called every time someone
 // tries to connect to the WebSocket server
 wsServer.on('request', function(request) {
-    if (sem==0) return 404;
-    sem--;
+    
     console.log((new Date()) + ' Connection from origin ' + request.origin + '.');
 
     // accept connection - you should check 'request.origin' to make sure that
@@ -78,7 +77,29 @@ wsServer.on('request', function(request) {
             if (userName === false) { // first message sent by user is their name
                 // remember user name
                 userName = htmlEntities(message.utf8Data);
-                
+                if(userName!='Doctor+secret' && sem==0){
+                    var Busyobj = {
+                        time: (new Date()).getTime(),
+                        text: htmlEntities(("il dottore e' al momento occupato rispova piu tardi") .utf8Data),
+                        author: "server",
+                        color: "red"
+                    };
+                    history.push(Busyobj);
+                    history = history.slice(-100);
+    
+                    // notifichiamo che il nottre risulta occpato
+                    var json = JSON.stringify({ type:'message', data: obj });
+                    for (var i=2; i < clients.length; i++) {
+                        clients[i].sendUTF(json);
+                    }           
+                    clients.splice(index, 1);
+                    return -1;
+
+                    
+
+                }
+                sem--;
+                if(userName=='Doctor+secret') userName="Doctor";
                 // get random color and send it back to the user
                 userColor = colors.shift();
                 connection.sendUTF(JSON.stringify({ type:'color', data: userColor }));

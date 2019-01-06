@@ -32,7 +32,7 @@ Per muoversi all'interno del sito abbiamo definito i vari routes per le chiamate
 * ```POST /register``` Invio dei dati di login.
 * ```GET /register``` Restituisce Documento HTML per effettuare la registrazione.
 * ```POST /register``` Invio dei dati di registrazione.
-* ```GET /logout``` Effettua logout sessione e restituisce Documento HTML principale del sito.
+* ```GET /logout``` Effettua logout sessione e reindirizza sulla pagina principale del sito.
 
 Dopo il login dei pazienti:
 
@@ -56,7 +56,7 @@ Dopo il login dei dottori:
 * OpenCage (servizio REST esterno per geocodificare un indirizzo)
     * ```GET /opencage/(:query)``` Se il valore *(:query)* == 'studio' la chiamata permette ai pazienti di conoscere la locazione precisa dello studio. Altrimenti si può ricercare una località ponendo %20 al posto degli spazi.
 * Generazione dei dottori per i test
-    * ```GET /install/(:arg)``` Genera un dottore di nome *(:arg)* inserendolo nel database e restituisce Documento HTML principale del sito.
+    * ```GET /install/(:arg)``` Genera un dottore di nome *(:arg)* inserendolo nel database e reindirizza sulla pagina principale del sito.
 <br />
 
 **API REST iDentistCare:**

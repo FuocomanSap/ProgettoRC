@@ -88,7 +88,7 @@ wsServer.on('request', function(request) {
                     history = history.slice(-100);
     
                     // notifichiamo che il nottre risulta occpato
-                    var json = JSON.stringify({ type:'message', data: obj });
+                    var json = JSON.stringify({ type:'message', data: Busyobj });
                     for (var i=2; i < clients.length; i++) {
                         clients[i].sendUTF(json);
                     }           

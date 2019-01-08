@@ -77,7 +77,7 @@ wsServer.on('request', function(request) {
             if (userName === false) { // first message sent by user is their name
                 // remember user name
                 userName = htmlEntities(message.utf8Data);
-                if(userName!='Doctor+secret' && sem==0){
+                if(userName!='Doctor' && sem==0){
                     var Busyobj = {
                         time: (new Date()).getTime(),
                         text: htmlEntities(("il dottore e' al momento occupato rispova piu tardi") .utf8Data),
@@ -99,7 +99,7 @@ wsServer.on('request', function(request) {
 
                 }
                 sem--;
-                if(userName=='Doctor+secret') userName="Doctor";
+               // if(userName=='Doctor+secret') userName="Doctor";
                 // get random color and send it back to the user
                 userColor = colors.shift();
                 connection.sendUTF(JSON.stringify({ type:'color', data: userColor }));

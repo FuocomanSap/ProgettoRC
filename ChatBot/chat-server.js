@@ -80,7 +80,7 @@ wsServer.on('request', function(request) {
                 if(userName!='Doctor' && sem==0){
                     var Busyobj = {
                         time: (new Date()).getTime(),
-                        text: htmlEntities(("il dottore e' al momento occupato rispova piu tardi") .utf8Data),
+                        text: htmlEntities(("il dottore e' al momento occupato riprovi piu tardi") .utf8Data),
                         author: "server",
                         color: "red"
                     };

@@ -64,7 +64,7 @@ Dopo il login dei dottori:
     * ```GET /dottori/(:sesso)``` *(:sesso)* può assumere 3 valori: ALL, MALE, FEMALE. Restituisce un json con i dottori richiesti.
     * esempio di utilizzo: ```curl localhost/dottori/ALL``` restituisce json {nome:$NOME, cognome:$COGNOME, sesso:$SESSO, dataNascita:$DATANASCITA}
 * Cartella clinica del paziente (Autenticazione iniziale per prendere token, con token)
-    * ```localhost/apicartellaclinica``` Restituisce la cartella clinica (json) del paziente che la richiede.
+    * ```GET /apicartellaclinica``` Restituisce la cartella clinica (json) del paziente che la richiede.
     * esempio di utilizzo: ```curl -H "Authorization: Bearer $TOKEN" localhost/apicartellaclinica``` restituisce json {info: $DATIPAZIENTE, cartella: $DATICARTELLA}
 
 ## Architettura

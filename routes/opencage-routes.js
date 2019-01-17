@@ -20,17 +20,17 @@ module.exports = function(passport){
                     luogo: myjson["results"][0]["components"]
                 });
             });
-        }
-        myurl = 'https://api.opencagedata.com/geocode/v1/json?q='+query+'&key='+key;
+        }else {
+            myurl = 'https://api.opencagedata.com/geocode/v1/json?q='+query+'&key='+key;
 
-        request(myurl, function (error, response, body) {
-            var myjson = JSON.parse(body) ; 
-            res.json({
-                coordinate: myjson["results"][0]["annotations"]["DMS"],
-                luogo: myjson["results"][0]["components"]
+            request(myurl, function (error, response, body) {
+                var myjson = JSON.parse(body) ; 
+                res.json({
+                    coordinate: myjson["results"][0]["annotations"]["DMS"],
+                    luogo: myjson["results"][0]["components"]
+                });
             });
-        });
-        
+        }        
     });
 
 
